@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        darkbg: "#0e1117", // Use a named color instead of CSS variables
+        lighttext: "gray-100",
       },
     },
   },

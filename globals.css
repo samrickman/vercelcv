@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Global background & text color */
+html,
+body {
+  @apply bg-darkbg text-gray-100;
+  font-family: "JetBrains Mono", monospace;
+  min-height: 100vh;
+  font-weight: 400;
+
+  /* Slightly thicker than normal (400) */
+
+  /* Ensure all elements are above the particles */
+
+}
+
+
+#tsparticles canvas {
+  pointer-events: none;
+}
+
+.back {
+  background-color: #0e1117;
+  z-index: 1;
+}
+
+/* Ensure links have the right hover effect */
+a {
+  color: #8B949E;
+  transition: color 0.3s ease-in-out;
+  z-index: 10;
+}
+
+a:hover {
+  color: #E6EDF3;
+}
+
+/* Ensure links have the right hover effect */
+li {
+  color: #8B949E;
+  transition: color 0.3s ease-in-out;
+}
+
+li:hover {
+  color: #E6EDF3;
+}
+
+.navbar {
+  background-color: #212124;
+  padding: 1rem;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.repulse {
+  z-index: 10;
+}
+
+/* Navigation List */
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  color: #8b949e;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-button {
+  color: #ffffff;
+}
+
+/* Prevent links from changing color */
+a svg {
+  color: #8B949E !important;
+  /* Gray color */
+}
+
+a:hover svg {
+  color: #E6EDF3 !important;
+  /* Slightly lighter gray */
+}
