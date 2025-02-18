@@ -28,7 +28,7 @@ export default function Misc() {
           <li className="text-gray-200">LLMs outperforming medical experts in clinical text summarisation (Dave Van Veen, Stanford)</li>
         </ul>
 
-        <div className="flex space-x-4 mt-2">
+        <div className="flex space-x-4 mt-2 linkdiv">
           <a href="https://goltc.org/videos/analysing-accuracy-balancing-bias-can-chatgpt-be-trusted-to-ease-the-care-documentation-burden-goltc-webinar-recording-23-may-2024/" className="">
             Watch the Webinar
           </a>
@@ -60,7 +60,7 @@ export default function Misc() {
           but Wickham noted that while grammar tells us what makes a valid sentence, it doesn’t tell us how to write well. 
           <em className="ml-2">Plotting Poetry</em> extends this idea to explore how to effectively communicate data visually.
         </p>
-        <div className="flex space-x-4 mt-2">
+        <div className="flex space-x-4 mt-2 linkdiv">
           <a href="https://www.youtube.com/watch?v=bP8osv_z8b8&t=2201s" className="">
             Watch on YouTube
           </a>
@@ -85,7 +85,7 @@ export default function Misc() {
           examples comparing visualisation methods — such as the different ways US election results can be mapped.
         </p>
 
-        <div className="flex space-x-4 mt-2">
+        <div className="flex space-x-4 mt-2 linkdiv">
           <a href="https://mode2.ltd/r-charts/index.html" className="">
             Read the Blog Post
           </a>

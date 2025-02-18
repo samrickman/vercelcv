@@ -43,7 +43,7 @@ export default function ParticlesBackground() {
         "delay": 0,
         "fullScreen": {
           "enable": true,
-          "zIndex": -1,
+          "zIndex": 0,
           
         },
         "detectRetina": true,

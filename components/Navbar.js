@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import ParticlesBackground from "./particlesBackground";
 
 export default function Navbar({ activeTab, handleTabChange }) {
   const tabs = [
@@ -19,14 +17,17 @@ export default function Navbar({ activeTab, handleTabChange }) {
           <li key={tab.id}>
             <button
               className={`nav-button ${activeTab === tab.id ? "active-tab" : ""}`}
-              onClick={() => handleTabChange(tab.id)}
+              onClick={() => {
+                console.log("Navbar: Clicked tab", tab.id); // ✅ Debugging
+                handleTabChange(tab.id);
+              }}
             >
               {tab.label}
             </button>
           </li>
         ))}
       </ul>
-        <ParticlesBackground />
+        
     </nav>
   );
 }

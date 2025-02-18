@@ -1,37 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useContext } from "react";
 import { FaGithub, FaStackOverflow, FaOrcid } from "react-icons/fa";
 import Image from "next/image";
-import Navbar from "../components/Navbar";
 import About from "../components/About";
 import CV from "../components/CV";
 import Research from "../components/Research";
 import Misc from "../components/Misc";
+import { TabContext } from "../components/NavbarWrapper";
+import GenderBiasPresentation from "../components/GenderBiasPresentation";
+import LonelinessPresentation from "../components/LonelinessPresentation";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("home");
+  // Retrieve activeTab and handleTabChange from our TabContext
+  const { activeTab, handleTabChange } = useContext(TabContext);
 
-
-  const handleTabChange = (tabId) => {
-    setActiveTab(tabId);
-    window.history.pushState({ tab: tabId }, "", "#" + tabId); // Add to history
-  };
-
-  useEffect(() => {
-    const handlePopState = () => {
-      setActiveTab("home"); // Always go back to Welcome page when Back is pressed
-      window.history.replaceState({ tab: "home" }, "", "#home"); // Prevent looping
-    };
-
-    window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, []);
-
+  // Moved from your old code. Now uses the *global* activeTab.
   const renderContent = () => {
     switch (activeTab) {
       case "about":
@@ -39,9 +23,13 @@ export default function Home() {
       case "cv":
         return <CV />;
       case "research":
-        return <Research />;
+        return <Research handleTabChange={handleTabChange}/>;
       case "misc":
         return <Misc />;
+      case "genderbiaspresentation":
+          return<GenderBiasPresentation />;
+      case "lonelinesspresentation":
+          return<LonelinessPresentation />;
       default:
         return (
           <section className="p-6 max-w-4xl mx-auto text-center">
@@ -51,29 +39,28 @@ export default function Home() {
               My work focuses on using AI to extract insights from unstructured administrative care records, predicting population need, 
               and evaluating bias in large language models (LLMs) to promote fair and responsible use of AI.
             </p>
-<p className="mt-4 text-gray-400">
-  Find out more 
-  <button 
-    className="text-[#E6EDF3] font-semibold hover:underline ml-2" 
-    onClick={() => handleTabChange("about")}
-  >
-    About Me
-  </button>, or explore my 
-  <button 
-    className="text-[#E6EDF3] font-semibold hover:underline ml-2" 
-    onClick={() => handleTabChange("research")}
-  >
-    Research
-  </button>, and 
-  <button 
-    className="text-[#E6EDF3] font-semibold hover:underline ml-2 mr-2" 
-    onClick={() => handleTabChange("cv")}
-  >
-    CV
-  </button> 
-  to learn more.
-</p>
-
+            <p className="mt-4 text-gray-400">
+              Find out more 
+              <button 
+                className="text-[#E6EDF3] font-semibold hover:underline ml-2" 
+                onClick={() => handleTabChange("about")}
+              >
+                About Me
+              </button>, or explore my 
+              <button 
+                className="text-[#E6EDF3] font-semibold hover:underline ml-2" 
+                onClick={() => handleTabChange("research")}
+              >
+                Research
+              </button>, and 
+              <button 
+                className="text-[#E6EDF3] font-semibold hover:underline ml-2 mr-2" 
+                onClick={() => handleTabChange("cv")}
+              >
+                CV
+              </button> 
+              to learn more.
+            </p>
           </section>
         );
     }
@@ -81,9 +68,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Navbar */}
-      <Navbar activeTab={activeTab} handleTabChange={handleTabChange} />
-
       {/* Header Section */}
       <header className="pt-20 p-6 text-center flex flex-col items-center">
         <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-600 mb-4 image-container">

@@ -1,4 +1,5 @@
-export default function Research() {
+
+export default function Research({handleTabChange}) {
   return (
     <section className="p-6 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold">Research</h2>
@@ -19,7 +20,13 @@ export default function Research() {
         <div className="mt-2">
           <a href="https://doi.org/10.21203/rs.3.rs-5166499/v2" className=" mr-4">Read the paper</a>
           <a href="https://github.com/samrickman/evaluate-llm-gender-bias-ltc" className="mr-4">GitHub repository</a>
-          <a href="/genderbiaspresentation" className="">Presentation</a>
+          <button 
+                className="presentation-button ml-2 mr-2" 
+                onClick={() => handleTabChange("genderbiaspresentation")}
+              >
+                Presentation
+            </button> 
+          
 
         </div>
       </div>
@@ -37,7 +44,12 @@ export default function Research() {
         <div className="mt-2">
           <a href="https://doi.org/10.1371/journal.pone.0319745" className=" mr-4">Read the paper</a>
           <a href="https://github.com/samrickman/lonelinessmodel" className="mr-4">GitHub repository</a>
-          <a href="/lonelinesspresentation" className="">Presentation</a>
+          <button 
+                className="presentation-button ml-2" 
+                onClick={() => handleTabChange("lonelinesspresentation")}
+              >
+                Presentation
+            </button> 
         </div>
       </div>
 
@@ -53,7 +65,12 @@ export default function Research() {
         </p>
         <div className="mt-2">
           <a href="https://doi.org/10.1093/geroni/igaf010" className="mr-4">Read the paper</a>
-          <a href="/lonelinesspresentation" className="">Presentation</a>
+          <button 
+                className="presentation-button ml-2" 
+                onClick={() => handleTabChange("lonelinesspresentation")}
+              >
+                Presentation
+            </button> 
         </div>
       </div>
     </section>
