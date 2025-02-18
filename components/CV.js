@@ -144,7 +144,7 @@ export default function CV() {
       <div className="mt-6">
         <h3 className="text-3xl font-semibold text-[#E6EDF3]">Qualifications</h3>
         <ul className="list-disc list-inside text-gray-200 mt-2">
-          <li><span className="font-semibold">PhD (2025)</span> – Understanding Adult Social Care Using Large Language Models with Administrative Records, London School of Economics.</li>
+          <li><span className="font-semibold">PhD candidate (submitted 2024, viva March 2025)</span> – Understanding Adult Social Care Using Large Language Models with Administrative Records, London School of Economics.</li>
           <li><span className="font-semibold">MA in Social and Political Science</span>, University of Cambridge.</li>
           <li><span className="font-semibold">MA in Social Work (Distinction)</span>, Goldsmiths College, University of London.</li>
         </ul>
