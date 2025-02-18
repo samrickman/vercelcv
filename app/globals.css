@@ -32,27 +32,23 @@ body {
 }
 
 /* Ensure links have the right hover effect */
-a {
-  color: #72b4ff;
+a, .presentation-button  {
+  color: #E6EDF3;
+  font-weight: 900;
   transition: color 0.3s ease-in-out;
   z-index: 10;
 }
 
-a:hover {
-  color: #E6EDF3;
+
+
+a:hover, .presentation-button:hover  {
+  color: #72b4ff;
 }
 
 /* presentation button the same as links */
-.presentation-button {
-  color: #72b4ff;
-  transition: color 0.3s ease-in-out;
-  z-index: 10;
-}
 
-.presentation-button:hover {
-  color: #E6EDF3 !important;
-  /* Slightly lighter gray */
-}
+
+
 
 ul.list-disc li {
   color: #cbd5e0 !important;

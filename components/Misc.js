@@ -1,4 +1,39 @@
+import SectionFooterLinks from "./SectionFooterLinks";
 export default function Misc() {
+
+  const goltcLinks = [
+    { href: "https://goltc.org/videos/analysing-accuracy-balancing-bias-can-chatgpt-be-trusted-to-ease-the-care-documentation-burden-goltc-webinar-recording-23-may-2024/", label: "Watch the webinar" },
+    { href: "https://github.com/samrickman/goltc-webinar-chatgpt-accuracy-bias", label: "View on GitHub" },
+  ];
+  
+  const imbalancedClassifierLinks = [
+    { href: "https://github.com/samrickman/imbalanced-classifier-comparison", label: "View on GitHub" },
+  ];
+  
+  const plottingPoetryLinks = [
+    { href: "https://www.youtube.com/watch?v=bP8osv_z8b8&t=2201s", label: "Watch on YouTube" },
+    { href: "https://github.com/samrickman/plotting-poetry", label: "View on GitHub" },
+  ];
+  
+  const mapsCartogramsLinks = [
+    { href: "https://mode2.ltd/r-charts/index.html", label: "Read the blog post" },
+    { href: "https://github.com/samrickman/goltc-dsn-maps-cartograms-blog", label: "View on GitHub" },
+  ];
+  
+  const krippAlphaLinks = [
+    { href: "https://github.com/samrickman/krippendorf-alpha-cohen-kappa-simulation", label: "View on GitHub" },
+  ];
+  
+  const aethelredLinks = [
+    { href: "https://github.com/samrickman/aethelreds-adventure", label: "View on GitHub" },
+  ];
+  
+  const tcoLinks = [
+    { href: "https://stackoverflow.com/questions/78979492/optimization-of-tail-recursion-in-r/78989350#78989350", label: "Read on Stack Overflow" },
+  ];		
+      
+
+
   return (
     <section className="p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold">Other Projects</h2>
@@ -28,14 +63,8 @@ export default function Misc() {
           <li className="text-gray-200">LLMs outperforming medical experts in clinical text summarisation (Dave Van Veen, Stanford)</li>
         </ul>
 
-        <div className="flex space-x-4 mt-2 linkdiv">
-          <a href="https://goltc.org/videos/analysing-accuracy-balancing-bias-can-chatgpt-be-trusted-to-ease-the-care-documentation-burden-goltc-webinar-recording-23-may-2024/" className="">
-            Watch the Webinar
-          </a>
-          <a href="https://github.com/samrickman/goltc-webinar-chatgpt-accuracy-bias" className="">
-            View on GitHub
-          </a>
-        </div>
+        <SectionFooterLinks links={goltcLinks} />
+        
       </div>
 
 
@@ -47,9 +76,7 @@ export default function Misc() {
           under imbalanced data conditions with varying levels of noise. Covers logistic regression, random forest, 
           bagging, gradient boosting, Gaussian process, and sequential neural networks.
         </p>
-        <a href="https://github.com/samrickman/imbalanced-classifier-comparison" className=" inline-block">
-          View on GitHub
-        </a>
+        <SectionFooterLinks links={imbalancedClassifierLinks} />
       </div>
 
       {/* Plotting Poetry */}
@@ -60,14 +87,8 @@ export default function Misc() {
           but Wickham noted that while grammar tells us what makes a valid sentence, it doesn’t tell us how to write well. 
           <em className="ml-2">Plotting Poetry</em> extends this idea to explore how to effectively communicate data visually.
         </p>
-        <div className="flex space-x-4 mt-2 linkdiv">
-          <a href="https://www.youtube.com/watch?v=bP8osv_z8b8&t=2201s" className="">
-            Watch on YouTube
-          </a>
-          <a href="https://github.com/samrickman/plotting-poetry" className="">
-            View on GitHub
-          </a>
-        </div>
+        <SectionFooterLinks links={plottingPoetryLinks} />
+
       </div>
 
       {/* Interactive Maps & Cartograms */}
@@ -85,14 +106,8 @@ export default function Misc() {
           examples comparing visualisation methods — such as the different ways US election results can be mapped.
         </p>
 
-        <div className="flex space-x-4 mt-2 linkdiv">
-          <a href="https://mode2.ltd/r-charts/index.html" className="">
-            Read the Blog Post
-          </a>
-          <a href="https://github.com/samrickman/goltc-dsn-maps-cartograms-blog" className="">
-            View on GitHub
-          </a>
-        </div>
+        <SectionFooterLinks links={mapsCartogramsLinks} />
+
       </div>
 
 
@@ -104,9 +119,8 @@ export default function Misc() {
           The results demonstrate that while both metrics behave similarly with balanced data, Krippendorff’s 𝛼 shows greater 
           uncertainty when data is highly imbalanced.
         </p>
-        <a href="https://github.com/samrickman/krippendorf-alpha-cohen-kappa-simulation" className=" inline-block">
-          View on GitHub
-        </a>
+        <SectionFooterLinks links={krippAlphaLinks} />
+
       </div>
 
 
@@ -117,9 +131,8 @@ export default function Misc() {
           A tiny text-based RPG I made with my 6-year-old daughter. The story and many of the design choices — including 
           a flaming blue horse representing the King’s tax collectors — were hers. Written in Python.
         </p>
-        <a href="https://github.com/samrickman/aethelreds-adventure" className=" inline-block">
-          View on GitHub
-        </a>
+        <SectionFooterLinks links={aethelredLinks} />
+
       </div>
 
 
@@ -139,10 +152,8 @@ export default function Misc() {
         it can be slower than standard recursion.
       </p>
 
-      <a href="https://stackoverflow.com/questions/78979492/optimization-of-tail-recursion-in-r/78989350#78989350" 
-        className=" inline-block mt-2">
-        Read on Stack Overflow
-      </a>
+      <SectionFooterLinks links={tcoLinks} />
+
 
       <div className="mt-7 float-right">
         <a href="https://stackoverflow.com/users/12545041/samr" target="_blank" rel="noopener noreferrer">

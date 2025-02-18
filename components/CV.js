@@ -56,12 +56,12 @@ export default function CV() {
         </h3>
         <p className="text-gray-400">Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present</p>
         <ul className="list-disc list-inside text-gray-200 mt-2">
-          <li>Evaluating bias in Large Language Models (LLMs) used in social care.</li>
-          <li>Developing and training LLMs to extract structured data from free-text records.</li>
-          <li>Leading data science research projects and securing research grants.</li>
-          <li>Managing and mentoring a team of research assistants.</li>
-          <li>Assistant Editor at the <em>Journal of Long-Term Care</em>.</li>
-          <li>Lead for the Global Observatory of Long-Term Care Data Science Interest Group.</li>
+          <li>Evaluating bias in Large Language Models (LLMs) used in social care</li>
+          <li>Developing and training LLMs to extract structured data from free-text records</li>
+          <li>Leading data science research projects and securing research grants</li>
+          <li>Managing and mentoring a team of research assistants</li>
+          <li>Assistant Editor at the <a href="https://journal.ilpnetwork.org/about/editorialteam" target="_blank">Journal of Long-Term Care</a></li>
+          <li>Lead for the <a href="https://goltc.org/interest-group/data-science/" target="_blank">Global Observatory of Long-Term Care Data Science Interest Group</a></li>
         </ul>
       </div>
 
@@ -76,10 +76,10 @@ export default function CV() {
           This involved:
         </p>
         <ul className="list-disc list-inside text-gray-200 mt-2">
-          <li>Ensuring data integrity via validation checks and workflow optimisation.</li>
-          <li>Managing a research team’s contributions to maintain accuracy and efficiency.</li>
-          <li>Coordinating with local government stakeholders on data-driven policy insights.</li>
-          <li>Implementing geospatial analysis and NLP techniques for care system analysis.</li>
+          <li>Ensuring data integrity via validation checks</li>
+          <li>Managing a research team’s contributions to maintain accuracy</li>
+          <li>Coordinating with government stakeholders on data-driven insights</li>
+          <li>Implementing geospatial analysis evaluating capacity of care system</li>
         </ul>
       </div>
 
@@ -88,8 +88,13 @@ export default function CV() {
         <h3 className="text-xl font-semibold text-[#E6EDF3]">Selected Research & Reports</h3>
         <ul className="list-disc list-inside text-gray-200 mt-2">
           <li>
-            <span className="font-semibold">Evaluating Gender Bias in Large Language Models</span> (2024) – 
-            <a href="https://doi.org/10.21203/rs.3.rs-5166499/v2" className="text-blue-400 hover:underline ml-1">Read more</a>
+            <span className="font-semibold">Rickman, S. (2024) </span> <a href="https://doi.org/10.21203/rs.3.rs-5166499/v2" target="_blank" className="ml-1">Evaluating Gender Bias in Large Language Models</a> (preprint)
+          </li>
+          <li>
+            <span className="font-semibold">Rickman, S., Fernandez, J. L., & Malley, J. (2025). </span> <a href="https://academic.oup.com/innovateage/advance-article/doi/10.1093/geroni/igaf010/8005829" target="_blank" className="ml-1">Loneliness as a risk factor for time to care home entry for older adults receiving community care.</a> <em>Innovation in Aging</em>, igaf010.
+          </li>
+          <li>
+            <span className="font-semibold">Rickman, S., Fernandez, J. L., & Malley, J. (2025). </span> <a href="10.1371/journal.pone.0319745" target="_blank" className="ml-1">Understanding patterns of loneliness in older long-term care users using natural language processing with free text case notes.</a> <em>PLOS One</em> (Accepted February 2025 and currently in production).
           </li>
           <li>
             <span className="font-semibold">Analysing Variability in Systems for Joint Working</span> (2024) – 
@@ -117,27 +122,16 @@ export default function CV() {
 
       {/* Past Roles */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">Previous Roles</h3>
+      <h3 className="text-xl font-semibold text-[#E6EDF3]">Previous Roles</h3>
 
-        <h4 className="text-lg font-semibold text-gray-200 mt-2">
-          Occasional Research Officer | CPEC, LSE (2019 – 2020)
-        </h4>
+      <h4 className="text-lg font-semibold text-gray-200 mt-2">
+        Operational Manager, Senior Social Worker, Social Worker, Support Worker, Outreach Worker (2009 – 2019)
+      </h4>
+      <p className="text-gray-200 mt-2">
+        Managed a team of 14 staff, overseeing budgets, policy implementation, and service audits. Led data-driven service planning and inter-agency collaboration.  
+        Worked directly with rough sleepers, adults with mental health issues, drug and alcohol problems, dementia, physical disabilities, and histories of offending.
+      </p>
 
-        <h4 className="text-lg font-semibold text-gray-200 mt-4">
-          Operational Manager & Senior Social Worker | Local Authority Social Care (2014 – 2019)
-        </h4>
-        <p className="text-gray-200 mt-2">
-          Led a team of 14 staff, overseeing budget management, policy implementation, and care service audits.  
-          Worked on performance management, data-driven service planning, and inter-agency collaboration
-        </p>
-
-        <h4 className="text-lg font-semibold text-gray-200 mt-4">
-          Deputy Manager | Registered Social Landlord (2009 – 2012)
-        </h4>
-        <p className="text-gray-200 mt-2">
-          Developed successful bids for social service contracts,  
-          securing funding for long-term support initiatives.
-        </p>
       </div>
 
       {/* Qualifications */}

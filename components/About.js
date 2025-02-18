@@ -9,7 +9,7 @@ export default function About() {
         I work primarily in Python and R for machine learning, data analysis, and NLP, with experience in JavaScript for web development and visualisation. My research involves building and evaluating AI models that process complex text data, ensuring they are both accurate and practically useful in real-world applications.
       </p>
       <p className="mt-4">
-        Before moving into data science, I spent a decade in public services as a social worker and later as a team manager. This hands-on experience with frontline data collection and decision-making informs my approach to AI—bridging technical development with real-world needs in public services.
+        Before moving into data science, I spent a decade in public services as a social worker and later as a team manager. This hands-on experience with frontline data collection and decision-making informs my approach to AI — bridging technical development with real-world needs in public services.
       </p>
       <p className="mt-4">
         I studied Social and Political Science at the University of Cambridge, where I developed an interest in how data can drive better decision-making in policy and practice.
