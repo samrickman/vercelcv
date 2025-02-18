@@ -1,4 +1,5 @@
 import SectionFooterLinks from "./SectionFooterLinks";
+import Text from "./Text"
 
 
 
@@ -19,20 +20,22 @@ export default function Research({handleTabChange}) {
   return (
     <section className="p-6 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold">Research</h2>
-      <p className="mt-3"><em>Health and social care services generate vast amounts of written records. Yet most of this information is unstructured free text.
+      <Text txt="
+      <em>Health and social care services generate vast amounts of written records. Yet most of this information is unstructured free text.
         This creates two major challenges: vital information is difficult to extract, and frontline staff face an
         overwhelming documentation burden. My research explores AI to address both problems,
-        using LLMs to extract meaningful data from free text, and developing methods to evaluate bias in LLMs used to reduce administrative workload.</em></p>
+        using LLMs to extract meaningful data from free text, and developing methods to evaluate bias in LLMs used to reduce administrative workload.</em>"
+        />
       {/* Paper 1: Evaluating Gender Bias in LLMs */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold text-[#E6EDF3]">
           Evaluating Gender Bias in Large Language Models in Long-Term Care
         </h3>
-        <p className="text-gray-300 mt-2">
+        <Text txt="
           This study evaluates gender bias in LLM-generated summaries of long-term care records using Meta’s Llama 3 and Google’s Gemma.  
           Findings reveal significant gender-based differences in summaries, with women's health needs downplayed in certain models.  
-          The paper proposes a framework for <span className="font-semibold">quantitative evaluation of bias in generative LLMs</span>.
-        </p>
+          The paper proposes a framework for <span className='font-semibold'>quantitative evaluation of bias in generative LLMs</span>."
+          />
         <div className="mt-2">
           
       <div className="flex flex-wrap gap-4 items-center mt-2">
@@ -55,13 +58,13 @@ export default function Research({handleTabChange}) {
         <h3 className="text-xl font-semibold text-[#E6EDF3]">
           Understanding Patterns of Loneliness in Older Long-Term Care Users Using NLP
         </h3>
-        <p className="text-gray-300 mt-2">
+        <Text txt="
           This research applies NLP to over 1.1 million free-text case notes to identify loneliness in older adults.  
-          Using a <span className="font-semibold">transformer-based model with an F1 score of 0.92</span>, it validates loneliness indicators against external datasets,  
+          Using a <span className='font-semibold'>transformer-based model with an F1 score of 0.92</span>, it validates loneliness indicators against external datasets,  
           demonstrating the feasibility of extracting social determinants of health from administrative records.
           <br></br>
-          <sub className="mt-2"><em>This paper was accepted in February 2025 and is currently in production.</em></sub>
-        </p>
+          <sub className='mt-2'><em>This paper was accepted in February 2025 and is currently in production.</em></sub>"
+        />
         <div className="mt-2">
         <div className="flex flex-wrap gap-4 items-center mt-2">
         <SectionFooterLinks links={paperOneLinks} />
@@ -81,11 +84,12 @@ export default function Research({handleTabChange}) {
         <h3 className="text-xl font-semibold text-[#E6EDF3]">
           Loneliness as a Risk Factor for Time to Care Home Entry
         </h3>
-        <p className="text-gray-300 mt-2">
+        <Text txt="
           This study examines how loneliness affects the time until care home entry for older adults receiving community care.  
-          Using <span className="font-semibold">competing risk survival models</span> it finds that loneliness increases the likelihood of entering a care home  
+          Using <span className='font-semibold'>competing risk survival models</span> it finds that loneliness increases the likelihood of entering a care home  
           and may accelerate the process by an average of 9 months for high-risk individuals.
-        </p>
+          "
+          />
         <div className="flex flex-wrap gap-4 items-center mt-2">
         <SectionFooterLinks links={paperTwoLinks} />
         <button 

@@ -1,5 +1,3 @@
-"use client";
-
 export default function SectionFooterLinks({ links }) {
   return (
     <div className="flex flex-wrap gap-4 mt-2 linkdiv">

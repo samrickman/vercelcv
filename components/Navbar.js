@@ -1,4 +1,5 @@
 "use client";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 
 export default function Navbar({ activeTab, handleTabChange }) {
@@ -18,7 +19,6 @@ export default function Navbar({ activeTab, handleTabChange }) {
             <button
               className={`nav-button ${activeTab === tab.id ? "active-tab" : ""}`}
               onClick={() => {
-                console.log("Navbar: Clicked tab", tab.id); // ✅ Debugging
                 handleTabChange(tab.id);
               }}
             >
@@ -26,6 +26,7 @@ export default function Navbar({ activeTab, handleTabChange }) {
             </button>
           </li>
         ))}
+      <DarkModeToggle />
       </ul>
         
     </nav>

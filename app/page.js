@@ -39,22 +39,22 @@ export default function Home() {
               My work focuses on using AI to extract insights from unstructured administrative care records, predicting population need, 
               and evaluating bias in large language models (LLMs) to promote fair and responsible use of AI.
             </p>
-            <p className="mt-4 text-gray-400">
+            <p className="mt-4">
               Find out more 
               <button 
-                className="text-[#E6EDF3] font-semibold hover:underline ml-2" 
+                className="font-semibold hover:underline ml-2" 
                 onClick={() => handleTabChange("about")}
               >
                 About Me
               </button>, or explore my 
               <button 
-                className="text-[#E6EDF3] font-semibold hover:underline ml-2" 
+                className="font-semibold hover:underline ml-2" 
                 onClick={() => handleTabChange("research")}
               >
                 Research
               </button>, and 
               <button 
-                className="text-[#E6EDF3] font-semibold hover:underline ml-2 mr-2" 
+                className="font-semibold hover:underline ml-2 mr-2" 
                 onClick={() => handleTabChange("cv")}
               >
                 CV
@@ -79,16 +79,16 @@ export default function Home() {
 
       {/* Content Section */}
       {renderContent()}
-
       {/* Footer */}
       <footer className="p-6 text-center">
         <div className="flex justify-center space-x-4 text-gray-400">
-          <a href="https://github.com/samrickman" className="text-2xl"><FaGithub /></a>
-          <a href="https://stackoverflow.com/users/12545041/samr" className="text-2xl"><FaStackOverflow /></a>
-          <a href="https://orcid.org/0000-0003-1921-5258" className="text-2xl"><FaOrcid /></a>
+          <a href="https://github.com/samrickman/vercelcv/" target="blank_" className="text-2xl"><FaGithub /></a>
+          <a href="https://stackoverflow.com/users/12545041/samr" target="blank_" className="text-2xl"><FaStackOverflow /></a>
+          <a href="https://orcid.org/0000-0003-1921-5258" target="blank_" className="text-2xl"><FaOrcid /></a>
         </div>
         <p className="text-sm text-gray-500 mt-2">© 2025 Sam Rickman</p>
       </footer>
     </div>
+
   );
 }

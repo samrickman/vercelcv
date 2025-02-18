@@ -1,17 +1,19 @@
+import Text from "./Text"
+
 export default function CV() {
   return (
         <section className="p-6 max-w-4xl mx-auto">
           <h2 className="text-4xl font-semibold">CV</h2>
     {/* Technical Skills */}
     <div className="mt-6">
-      <h3 className="text-3xl font-semibold text-[#E6EDF3]">Technical Skills</h3>
+      <h3 className="text-3xl font-semibold">Technical Skills</h3>
 
       {/* Python */}
-      <h4 className="text-lg font-semibold text-gray-200 mt-4">Python</h4>
-      <p className="text-gray-200">
+      <h4 className="text-lg font-semibold mt-4">Python</h4>
+      <Text txt="
         Experienced in Python for data science, NLP, and machine learning. Skilled in:
-      </p>
-      <ul className="list-disc list-inside text-gray-200 mt-2">
+      "/>
+      <ul className="list-disc list-inside mt-2">
         <li>Machine Learning NLP: PyTorch, TensorFlow, Scikit-learn</li>
         <li>NLP: Hugging Face Transformers, Spacy, LangChain</li>
         <li>Data Processing: Pandas, NumPy, Cython</li>
@@ -19,11 +21,11 @@ export default function CV() {
       </ul>
 
       {/* R */}
-      <h4 className="text-lg font-semibold text-gray-200 mt-4">R</h4>
-      <p className="text-gray-200">
+      <h4 className="text-lg font-semibold mt-4">R</h4>
+      <Text txt="
         Strong background in R for statistical computing, data visualization, and performance optimization:
-      </p>
-      <ul className="list-disc list-inside text-gray-200 mt-2">
+      "/>
+      <ul className="list-disc list-inside mt-2">
         <li>Data Manipulation: <code>data.table</code>, <code>tidyverse</code></li>
         <li>Modelling: regression (lme4, survival, cmprsk), classification (caret), networks (igraph)</li>
         <li>Geospatial analysis: <code>sf</code>, <code>terra</code>, <code>osrm</code>, <code>leaflet</code>, tmap</li>
@@ -32,15 +34,16 @@ export default function CV() {
       </ul>
 
       {/* Other Tools & Languages */}
-      <h4 className="text-lg font-semibold text-gray-200 mt-4">Other Tools & Languages</h4>
-      <p className="text-gray-200">
-        I try to use <span className="font-semibold">the right tool for the job</span> and have experience with:
-      </p>
-      <ul className="list-disc list-inside text-gray-200 mt-2">
+      <h4 className="text-lg font-semibold mt-4">Other tools & languages</h4>
+      <Text txt="
+        I try to use <span className='font-semibold'>the right tool for the job</span> and have experience with:
+      "/>
+      <ul className="list-disc list-inside mt-2">
         <li>Lower-level Programming: Rust, C, C#</li>
         <li>Frontend & UI: reveal.js, React, Next.js, Tailwind CSS</li>
         <li>Backend & APIs: Node.js, FastAPI</li>
         <li>Systems & Scripting: Bash, PowerShell, SQL, VBA</li>
+        <li>Automated reports: Quarto, rmarkdown, LaTeX, Pandoc</li>
         <li>Cloud Computing: AWS (EC2, Lamba), DigitalOcean, Vercel</li>
       </ul>
 
@@ -51,11 +54,11 @@ export default function CV() {
         </h1>
       {/* Current Role */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">
+        <h3 className="text-xl font-semibold">
           Researcher in Data Science and the Care System
         </h3>
         <p className="text-gray-400">Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present</p>
-        <ul className="list-disc list-inside text-gray-200 mt-2">
+        <ul className="list-disc list-inside mt-2">
           <li>Evaluating bias in Large Language Models (LLMs) used in social care</li>
           <li>Developing and training LLMs to extract structured data from free-text records</li>
           <li>Leading data science research projects and securing research grants</li>
@@ -67,15 +70,15 @@ export default function CV() {
 
       {/* Key Technical Experience */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">
+        <h3 className="text-xl font-semibold">
           Data Science & AI Research
         </h3>
-        <p className="text-gray-200 mt-2">
+        <Text txt="
           During the Covid-19 pandemic, I managed a codebase of ~20,000 lines, 
-          leading a team in developing a data pipeline for <span className="font-semibold">automated data cleaning, summarisation, and reporting</span>.  
+          leading a team in developing a data pipeline for <span className='font-semibold'>automated data cleaning, summarisation, and reporting</span>.  
           This involved:
-        </p>
-        <ul className="list-disc list-inside text-gray-200 mt-2">
+        " />
+        <ul className="list-disc list-inside mt-2">
           <li>Ensuring data integrity via validation checks</li>
           <li>Managing a research team’s contributions to maintain accuracy</li>
           <li>Coordinating with government stakeholders on data-driven insights</li>
@@ -85,8 +88,8 @@ export default function CV() {
 
       {/* Selected Research & Reports */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">Selected Research & Reports</h3>
-        <ul className="list-disc list-inside text-gray-200 mt-2">
+        <h3 className="text-xl font-semibold">Selected Research & Reports</h3>
+        <ul className="list-disc list-inside mt-2">
           <li>
             <span className="font-semibold">Rickman, S. (2024) </span> <a href="https://doi.org/10.21203/rs.3.rs-5166499/v2" target="_blank" className="ml-1">Evaluating Gender Bias in Large Language Models</a> (preprint)
           </li>
@@ -113,31 +116,31 @@ export default function CV() {
 
       {/* Awards & Recognition */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">Awards & Recognition</h3>
-        <p className="text-gray-200 mt-2">
-          🏆 <span className="font-semibold">2022 ILPN Josh Weiner Award</span> –  
+        <h3 className="text-xl font-semibold">Awards & Recognition</h3>
+        <Text txt="
+          🏆 <span className='font-semibold'>2022 ILPN Josh Weiner Award</span> –  
           Best conference presentation: <em>Using Machine Learning to Extract Information About Loneliness in Older People</em>.
-        </p>
+        "/>
       </div>
 
       {/* Past Roles */}
       <div className="mt-6">
-      <h3 className="text-xl font-semibold text-[#E6EDF3]">Previous Roles</h3>
+      <h3 className="text-xl font-semibold">Previous Roles</h3>
 
-      <h4 className="text-lg font-semibold text-gray-200 mt-2">
+      <h4 className="text-lg font-semibold mt-2">
         Operational Manager, Senior Social Worker, Social Worker, Support Worker, Outreach Worker (2009 – 2019)
       </h4>
-      <p className="text-gray-200 mt-2">
+      <Text txt="
         Managed a team of 14 staff, overseeing budgets, policy implementation, and service audits. Led data-driven service planning and inter-agency collaboration.  
         Worked directly with rough sleepers, adults with mental health issues, drug and alcohol problems, dementia, physical disabilities, and histories of offending.
-      </p>
+      "/>
 
       </div>
 
       {/* Qualifications */}
       <div className="mt-6">
-        <h3 className="text-3xl font-semibold text-[#E6EDF3]">Qualifications</h3>
-        <ul className="list-disc list-inside text-gray-200 mt-2">
+        <h3 className="text-3xl font-semibold">Qualifications</h3>
+        <ul className="list-disc list-inside mt-2">
           <li><span className="font-semibold">PhD candidate (submitted 2024, viva March 2025)</span> – Understanding Adult Social Care Using Large Language Models with Administrative Records, London School of Economics.</li>
           <li><span className="font-semibold">MA in Social and Political Science</span>, University of Cambridge.</li>
           <li><span className="font-semibold">MA in Social Work (Distinction)</span>, Goldsmiths College, University of London.</li>
