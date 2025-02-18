@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import ParticlesBackground from "./particlesBackground";
 
-export default function Navbar({ activeTab, setActiveTab }) {
+export default function Navbar({ activeTab, handleTabChange }) {
   const tabs = [
     { id: "home", label: "Home" },
     { id: "about", label: "About Me" },
@@ -19,7 +19,7 @@ export default function Navbar({ activeTab, setActiveTab }) {
           <li key={tab.id}>
             <button
               className={`nav-button ${activeTab === tab.id ? "active-tab" : ""}`}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabChange(tab.id)}
             >
               {tab.label}
             </button>

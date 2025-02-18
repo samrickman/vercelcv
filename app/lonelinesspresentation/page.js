@@ -4,18 +4,18 @@ export default function Presentation() {
   return (
     <section className="p-6 max-w-4xl mx-auto content-center ml-40">
       <Head>
-        <title>AI Bias Presentation</title>
+        <title>LLM loneliness Presentation</title>
       </Head>
-      <h2 className="text-2xl font-semibold text-[#E6EDF3]">AI Bias Presentation</h2>
+      <h2 className="text-2xl font-semibold text-[#E6EDF3]">LLM loneliness Presentation</h2>
       <p className="text-gray-300 mt-2">
-        This presentation explores bias in AI models. View it below or 
-        <a href="/ai_bias_presentation.html" target="_blank" className="text-blue-400 hover:underline ml-2">open in a new tab</a>.
+        This presentation extracts risk of loneliness from care notes using NLP and uses it in a regression model as a predictor of risk of care home entry. View it below or 
+        <a href="/loneliness-presentation.html" target="_blank" className="text-blue-400 hover:underline ml-2">open in a new tab</a>.
       </p>
       
       {/* Embedded Reveal.js Presentation */}
       <div className="content-center ml-0 mt-4 border border-gray-600 rounded-lg overflow-hidden flex justify-start w-[70vw]">
   <iframe
-    src="/gender-bias-presentation.html"
+    src="/loneliness-presentation.html"
     className="w-[90vw] h-[85vh] border-0 ml-0"
     title="AI Bias Presentation"
   ></iframe>

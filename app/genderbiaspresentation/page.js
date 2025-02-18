@@ -9,7 +9,7 @@ export default function Presentation() {
       <h2 className="text-2xl font-semibold text-[#E6EDF3]">AI Bias Presentation</h2>
       <p className="text-gray-300 mt-2">
         This presentation explores bias in AI models. View it below or 
-        <a href="/ai_bias_presentation.html" target="_blank" className="text-blue-400 hover:underline ml-2">open in a new tab</a>.
+        <a href="/gender-bias-presentation.html" target="_blank" className="text-blue-400 hover:underline ml-2">open in a new tab</a>.
       </p>
       
       {/* Embedded Reveal.js Presentation */}

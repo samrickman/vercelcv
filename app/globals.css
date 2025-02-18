@@ -33,6 +33,16 @@ a {
   z-index: 10;
 }
 
+ul.list-disc li {
+  color: #cbd5e0 !important; /* Equivalent to Tailwind's text-gray-400 */
+}
+
+.image-container {
+  position: relative;
+  z-index: 10;
+  opacity: 1;
+}
+
 a:hover {
   color: #E6EDF3;
 }
