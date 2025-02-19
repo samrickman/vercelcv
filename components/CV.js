@@ -54,37 +54,44 @@ export default function CV() {
         </h1>
       {/* Current Role */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold">
-          Researcher in Data Science and the Care System
-        </h3>
-        <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present" />
-        <ul className="list-disc list-inside mt-2">
-          <li>Evaluating bias in Large Language Models (LLMs) used in social care</li>
-          <li>Developing and training LLMs to extract structured data from free-text records</li>
-          <li>Leading data science research projects and securing research grants</li>
-          <li>Managing and mentoring a team of research assistants</li>
-          <li>Assistant Editor at the <a href="https://journal.ilpnetwork.org/about/editorialteam" target="_blank">Journal of Long-Term Care</a></li>
-          <li>Lead for the <a href="https://goltc.org/interest-group/data-science/" target="_blank">Global Observatory of Long-Term Care Data Science Interest Group</a></li>
-        </ul>
-      </div>
+  <h3 className="text-xl font-semibold">
+    Researcher in Data Science and the Care System
+  </h3>
+  <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present" />
+  <ul className="list-disc list-inside mt-2">
+    <li>
+      Designed and led a study evaluating gender bias in Large Language Models (LLMs) used in social care, 
+      developing methods to quantify bias.
+    </li>
+    <li>
+      Created a pipeline to extract structured data from free-text social care records, enabling data-driven service planning.
+    </li>
+    <li>
+      Led multi-disciplinary data science projects on AI in public services, securing research funding 
+      and applying machine learning to forecast population need and care system capacity:
+      <ul className="list-disc list-inside ml-6 mt-1">
+        <li>Developed models for predicting care demand and resource allocation.</li>
+        <li>Implemented geospatial analysis to evaluate service availability.</li>
+        <li>Automated data cleaning, summarisation, and reporting, managing a 20,000-line codebase during the Covid-19 pandemic.</li>
+      </ul>
+    </li>
+    <li>
+      Managed and mentored research assistants, ensuring technical accuracy and rigour in analysis.
+      <ul className="list-disc list-inside ml-6 mt-1">
+        <li>Oversaw model validation processes to ensure data integrity.</li>
+        <li>Coordinated research outputs with government stakeholders.</li>
+      </ul>
+    </li>
+    <li>
+      Assistant Editor at the <a href="https://journal.ilpnetwork.org/about/editorialteam" target="_blank">Journal of Long-Term Care</a>.
+    </li>
+    <li>
+      Founded and led the <a href="https://goltc.org/interest-group/data-science/" target="_blank">Global Observatory of Long-Term Care Data Science Interest Group</a>, 
+      bringing together researchers to discuss AI applications in care policy.
+    </li>
+  </ul>
+</div>
 
-      {/* Key Technical Experience */}
-      <div className="mt-6">
-        <h3 className="text-xl font-semibold">
-          Data Science & AI Research
-        </h3>
-        <Text txt="
-          During the Covid-19 pandemic, I managed a codebase of ~20,000 lines, 
-          leading a team in developing a data pipeline for <span className='font-semibold'>automated data cleaning, summarisation, and reporting</span>.  
-          This involved:
-        " />
-        <ul className="list-disc list-inside mt-2">
-          <li>Ensuring data integrity via validation checks</li>
-          <li>Managing a research team’s contributions to maintain accuracy</li>
-          <li>Coordinating with government stakeholders on data-driven insights</li>
-          <li>Implementing geospatial analysis evaluating capacity of care system</li>
-        </ul>
-      </div>
 
       {/* Selected Research & Reports */}
       <div className="mt-6">
