@@ -1,8 +1,8 @@
-# Sam Rickman - Personal Site
+# Personal website
 
 ## Overview
 
-This is my personal site, showcasing my skills, research, and experience as a **Data Scientist** and **AI Researcher**. It includes links to research and other projects.
+This is the source for my [personal website](https://www.samrickman.com/), showcasing my skills, research, and experience as a **Data Scientist** and **AI Researcher**. It includes links to research and other projects.
 
 ## Features
 
