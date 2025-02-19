@@ -10,17 +10,19 @@ body {
   font-family: "JetBrains Mono", monospace;
   min-height: 100vh;
   font-weight: 400;
-
-  /* Slightly thicker than normal (400) */
-
-  /* Ensure all elements are above the particles */
-
 }
 
 .dark-mode-button {
   position: absolute;
   top: 1em;
   right: 1em;
+}
+
+/* on mobile dark mode button overlays text in nav bar so make lower */
+@media (max-width: 639px) {
+  .dark-mode-button {
+    top: 3em;
+  }
 }
 
 .linkdiv {
