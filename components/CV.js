@@ -57,7 +57,7 @@ export default function CV() {
         <h3 className="text-xl font-semibold">
           Researcher in Data Science and the Care System
         </h3>
-        <p className="text-gray-400">Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present</p>
+        <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present" />
         <ul className="list-disc list-inside mt-2">
           <li>Evaluating bias in Large Language Models (LLMs) used in social care</li>
           <li>Developing and training LLMs to extract structured data from free-text records</li>
@@ -139,7 +139,7 @@ export default function CV() {
 
       {/* Qualifications */}
       <div className="mt-6">
-        <h3 className="text-3xl font-semibold">Qualifications</h3>
+        <h3 className="text-3xl font-semibold">Education</h3>
         <ul className="list-disc list-inside mt-2">
           <li><span className="font-semibold">PhD candidate (submitted 2024, viva March 2025)</span> – Understanding Adult Social Care Using Large Language Models with Administrative Records, London School of Economics.</li>
           <li><span className="font-semibold">MA in Social and Political Science</span>, University of Cambridge.</li>
