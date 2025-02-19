@@ -2,12 +2,12 @@
 
 ## Overview
 
-This is the source for my [personal website](https://www.samrickman.com/), showcasing my skills, research, and experience as a **Data Scientist** and **AI Researcher**. It includes links to research and other projects.
+This is the source for my [personal website](https://www.samrickman.com/), showcasing my skills, research, and experience as a data scientist and researcher in the use of Large Language Models (LLMs). It includes links to research and other projects.
 
 ## Features
 
 - **Dynamic navigation**: Updates content without reloading
-- **Dark mode toggle**: Who doesn't love dark mode? Such people exist, apparently
+- **Dark mode toggle**: For accessibility
 - **Particle effects**: Interactive background using [`tsparticles`](https://github.com/tsparticles/tsparticles)
 
 ## Tech stack
