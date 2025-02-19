@@ -28,7 +28,7 @@ export default function Research({handleTabChange}) {
         />
       {/* Paper 1: Evaluating Gender Bias in LLMs */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">
+        <h3 className="text-xl font-semibold">
           Evaluating Gender Bias in Large Language Models in Long-Term Care
         </h3>
         <Text txt="
@@ -55,15 +55,15 @@ export default function Research({handleTabChange}) {
 
       {/* Paper 2: NLP & Loneliness in Long-Term Care Users */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">
+        <h3 className="text-xl font-semibold">
           Understanding Patterns of Loneliness in Older Long-Term Care Users Using NLP
         </h3>
         <Text txt="
           This research applies NLP to over 1.1 million free-text case notes to identify loneliness in older adults.  
           Using a <span className='font-semibold'>transformer-based model with an F1 score of 0.92</span>, it validates loneliness indicators against external datasets,  
           demonstrating the feasibility of extracting social determinants of health from administrative records.
-          <br></br>
-          <sub className='mt-2'><em>This paper was accepted in February 2025 and is currently in production.</em></sub>"
+          
+          <div><sub><em>This paper was accepted in February 2025 and is currently in production.</em></sub></div>"
         />
         <div className="mt-2">
         <div className="flex flex-wrap gap-4 items-center mt-2">
@@ -81,7 +81,7 @@ export default function Research({handleTabChange}) {
 
       {/* Paper 3: Loneliness & Risk of Care Home Entry */}
       <div className="mt-6">
-        <h3 className="text-xl font-semibold text-[#E6EDF3]">
+        <h3 className="text-xl font-semibold">
           Loneliness as a Risk Factor for Time to Care Home Entry
         </h3>
         <Text txt="
