@@ -6,8 +6,7 @@ export default function FrontPageContent() {
         <h2 className="text-3xl font-semibold">Discover my work</h2>
         <p className="mt-4 text-lg">
           I’m a data scientist and AI researcher specialising in natural language processing (NLP) and machine learning for public services.
-          My work focuses on using AI to extract insights from unstructured administrative care records, predicting population need, 
-          and evaluating bias in large language models (LLMs) to promote fair and responsible use of AI.
+          My work applies AI to extract insights from unstructured administrative care records, forecast population need, and evaluate bias in large language models (LLMs) to ensure their fair and responsible use.
         </p>
         <p className="mt-4">
           Find out more 
