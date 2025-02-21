@@ -29,6 +29,7 @@ export default function Misc() {
   
   const aethelredLinks = [
     { href: "https://github.com/samrickman/aethelreds-adventure", label: "View on GitHub" },
+    { href: "https://aethelreds-adventure-production.up.railway.app/", label: "Play online (not mobile-friendly)" },
   ];
   
   const tcoLinks = [
@@ -158,7 +159,7 @@ export default function Misc() {
       <SectionFooterLinks links={tcoLinks} />
 
 
-      <div className="mt-7 float-right">
+      <div className="mt-0 float-right">
         <a href="https://stackoverflow.com/users/12545041/samr" target="_blank" rel="noopener noreferrer">
           <img src="https://stackoverflow.com/users/flair/12545041.png?theme=dark" width="208" height="58" alt="profile for Sam Rickman on Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
         </a>        

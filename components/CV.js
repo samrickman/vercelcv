@@ -61,7 +61,7 @@ export default function CV() {
   <ul className="list-disc list-inside mt-2">
     <li>
       Designed and led a study evaluating gender bias in Large Language Models (LLMs) used in social care, 
-      developing methods to quantify bias.
+      developing and using methods to quantify bias.
     </li>
     <li>
       Created a pipeline to extract structured data from free-text social care records, enabling data-driven service planning.
@@ -104,7 +104,7 @@ export default function CV() {
             <span className="font-semibold">Rickman, S., Fernandez, J. L., & Malley, J. (2025). </span> <a href="https://academic.oup.com/innovateage/advance-article/doi/10.1093/geroni/igaf010/8005829" target="_blank" className="ml-1">Loneliness as a risk factor for time to care home entry for older adults receiving community care.</a> <em>Innovation in Aging</em>, igaf010.
           </li>
           <li>
-            <span className="font-semibold">Rickman, S., Fernandez, J. L., & Malley, J. (2025). </span> <a href="10.1371/journal.pone.0319745" target="_blank" className="ml-1">Understanding patterns of loneliness in older long-term care users using natural language processing with free text case notes.</a> <em>PLOS One</em> (Accepted February 2025 and currently in production).
+            <span className="font-semibold">Rickman, S., Fernandez, J. L., & Malley, J. (2025). </span> <a href="https://eprints.lse.ac.uk/127374/" target="_blank" className="ml-1">Understanding patterns of loneliness in older long-term care users using natural language processing with free text case notes.</a> <em>PLOS One</em>.
           </li>
           <li>
             <span className="font-semibold">Analysing Variability in Systems for Joint Working</span> (2024) – 

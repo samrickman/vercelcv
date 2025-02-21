@@ -6,12 +6,12 @@ import Text from "./Text"
 export default function Research({handleTabChange}) {
   const genderBiasLinks = [
     { href: "https://doi.org/10.21203/rs.3.rs-5166499/v2", label: "Read the paper" },
-    { href: "https://github.com/samrickman/evaluate-llm-gender-bias-ltc", label: "GitHub repository" },
+    { href: "https://github.com/samrickman/evaluate-llm-gender-bias-ltc", label: "View on GitHub" },
   ];
   
   const paperOneLinks = [
-    { href: "https://doi.org/10.1371/journal.pone.0319745", label: "Read the paper" },
-    { href: "https://github.com/samrickman/lonelinessmodel", label: "GitHub repository" },
+    { href: "https://eprints.lse.ac.uk/127374/", label: "Read the paper" },
+    { href: "https://github.com/samrickman/lonelinessmodel", label: "View on GitHub" },
   ];
   
   const paperTwoLinks = [
@@ -63,7 +63,7 @@ export default function Research({handleTabChange}) {
           Using a <span className='font-semibold'>transformer-based model with an F1 score of 0.92</span>, it validates loneliness indicators against external datasets,  
           demonstrating the feasibility of extracting social determinants of health from administrative records.
           
-          <div><sub><em>This paper was accepted in February 2025 and is currently in production.</em></sub></div>"
+          <div><sub><em>In press (February 2025)</em></sub></div>"
         />
         <div className="mt-2">
         <div className="flex flex-wrap gap-4 items-center mt-2">
