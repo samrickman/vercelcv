@@ -1,7 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ParticlesBackground from "@/components/particlesBackground";
 import NavbarWrapper from "@/components/NavbarWrapper";
+import { DetailLevelProvider, useDetailLevel } from "@/context/DetailLevelContext";
+import BackgroundManager from "@/components/BackgroundManager"; // Import the client component
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,13 +23,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/*  Wrap everything except particles in NavbarWrapper so the tabs work */}
-        <NavbarWrapper>
-          {children}
-        </NavbarWrapper>
-        <ParticlesBackground />
-      </body>
+      <DetailLevelProvider>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <NavbarWrapper>{children}</NavbarWrapper>
+          <BackgroundManager />
+        </body>
+      </DetailLevelProvider>
     </html>
   );
 }
+

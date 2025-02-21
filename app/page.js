@@ -21,7 +21,7 @@ export default function Home() {
       case "about":
         return <About />;
       case "cv":
-        return <CV />;
+        return <CV handleTabChange={handleTabChange}/>;
       case "research":
         return <Research handleTabChange={handleTabChange}/>;
       case "misc":
@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <PageHeader />
+      <PageHeader/>
       {renderContent()}
       <ContactFooter />
     </div>

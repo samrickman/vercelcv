@@ -1,0 +1,31 @@
+Technical Skills
+Expert in data science, NLP, and machine learning. Skilled in:
+
+Python, R, JavaScript, and cloud platforms
+LLMs, NLP & machine learning in public services
+Data processing, modeling, and visualisation
+Automation, APIs, and scalable cloud solutions
+Full-stack development for research tools and dashboards
+Employment
+Researcher in AI & Data Science
+Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present
+
+Developed AI models to analyse free-text records and improve decision-making
+Led research on AI bias, influencing ethical use of ML in public services
+Built scalable data pipelines for forecasting and resource planning
+Selected Research
+Evaluating gender bias in LLMs in long-term care
+Extracting loneliness information from free text administrative data using LLMs
+Predicting care home entry from LLM-extracted loneliness
+Awards
+🏆 2022 ILPN Josh Weiner Award – Best ML research presentation.
+
+Previous Experience
+Public Services & Data-Driven Management (2009 – 2019)
+Led teams, managed budgets, and applied data-driven approaches to service improvement.
+
+Education
+PhD candidate (thesis submitted 2024, viva March 2025) – LSE.
+MA Social & Political Science, University of Cambridge.
+
+See samrickman.com for more detailed CV.

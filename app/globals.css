@@ -12,6 +12,46 @@ body {
   font-weight: 400;
 }
 
+.bg-pastoral {
+  background-image: url('/pastoral.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.pastoral-attribution {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 20;
+}
+
+.pastoral-attribution a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.pastoral-attribution a:hover {
+  color: #ddd;
+}
+
+/* Hide scrollbar for xterm.js */
+.xterm-viewport {
+  overflow: hidden !important;
+}
+
+
+.headshot {
+  z-index: -1 !important;
+}
+
 .dark-mode-button {
   position: absolute;
   top: 1em;
@@ -62,7 +102,7 @@ ul.list-disc li {
 
 .image-container {
   position: relative;
-  z-index: 9;
+  z-index: 1;
   opacity: 1;
 }
 
