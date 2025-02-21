@@ -32,7 +32,7 @@ export default function Home() {
           return<LonelinessPresentation />;
       default:
         return (
-          <FrontPageContent />
+          <FrontPageContent handleTabChange={handleTabChange}/>
 
         );
     }

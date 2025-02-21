@@ -1,5 +1,5 @@
 
-export default function FrontPageContent() {
+export default function FrontPageContent({handleTabChange}) {
     return (
 
         <section className="p-6 max-w-4xl mx-auto text-center">
