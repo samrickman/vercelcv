@@ -6,7 +6,7 @@ import "@xterm/xterm/css/xterm.css";
 import { Interactivity } from "@tsparticles/engine";
 
 function updateParticlesConfig(newValues) {
-    console.log("Dispatching particle update:", newValues);
+    
     window.dispatchEvent(new CustomEvent("updateParticles", { detail: newValues }));
 }
 

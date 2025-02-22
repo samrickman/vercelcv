@@ -10,7 +10,7 @@ import CVPastoralMode from "./CVPastoralMode";
 
 export default function CV({ handleTabChange }) {
   const { detailLevel } = useDetailLevel();
-  console.log("detailLevel: ", detailLevel === 4);
+  
   const levels = [
     {
       name: "Pastoral Mode",
