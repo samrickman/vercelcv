@@ -52,11 +52,15 @@ export default function CvDetailSlider() {
           {levels.map((lvl, idx) => (
             <div key={idx} className="w-1/5 flex flex-col items-center">
               <span
-                className={`transition-all duration-100 font-medium transform ${hoveredLevel === idx || detailLevel === idx ? "opacity-100 text-lg scale-110" : "opacity-50 text-sm scale-100"
+                className={`transition-all duration-100 font-medium transform
+                ${hoveredLevel === idx || detailLevel === idx
+                    ? "opacity-100 text-lg scale-110"
+                    : "opacity-0 sm:opacity-50 text-sm scale-100"
                   }`}
               >
                 {lvl.name}
               </span>
+
             </div>
           ))}
         </div>
