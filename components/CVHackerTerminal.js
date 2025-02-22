@@ -6,7 +6,7 @@ import "@xterm/xterm/css/xterm.css";
 import { Interactivity } from "@tsparticles/engine";
 
 function updateParticlesConfig(newValues) {
-    
+
     window.dispatchEvent(new CustomEvent("updateParticles", { detail: newValues }));
 }
 
@@ -216,7 +216,7 @@ export default function CVHackerTerminal() {
 
         switch (command) {
             case "aa":
-                
+
             case "":
                 // Just an empty Enter. Show prompt again.
                 prompt(terminal);
@@ -242,13 +242,15 @@ export default function CVHackerTerminal() {
                 terminal.writeln("Usage: particles <option> <value>");
                 terminal.writeln("Commands:");
                 terminal.writeln("  particles num <number>  - Update number of particles. Default is 100.");
-                terminal.writeln("      Note: Values > ~2000 may be slow to render.");
+                terminal.writeln("      Note: Values > ~500 may be slow to render.");
                 terminal.writeln("  particles opacity <number>  - Update particle opacity. Default is 0.5. Range: 0.0 - 1.0.");
                 terminal.writeln("  particles speed <number>  - Update particle speed. Default is 0.7.");
                 terminal.writeln("      Note: Values > 25 may cause nausea.");
                 terminal.writeln("  particles color <option> - Update colors. Default is medium.");
                 terminal.writeln("      Options: none, medium, high.");
                 terminal.writeln("  particles hover <option> - Update hover action. Default is repulse.");
+                terminal.writeln("      Options: repulse, slow, grab, attract.");
+                terminal.writeln("  particles click <option> - Update click action. Default is none.");
                 terminal.writeln("      Options: repulse, slow, grab, attract.");
                 break;
             default:
@@ -289,6 +291,7 @@ export default function CVHackerTerminal() {
                     const args = command.split(" ");
                     if (args.length !== 3 || isNaN(args[2])) {
                         terminal.writeln("Usage: particles speed <number>");
+                        terminal.writeln("Default is 0.7");
                         break;
                     }
                     const speed = parseFloat(args[2], 10);
@@ -335,6 +338,19 @@ export default function CVHackerTerminal() {
                     }
                     updateParticlesConfig({ interactivity: { events: { onHover: { mode: hoverSetting } } } });
                     terminal.writeln(`\rUpdated particles hover mode to ${hoverSetting}`);
+                }
+                else if (command.startsWith("particles click")) {
+                    const args = command.split(" ");
+                    const clickSetting = args[2];
+                    if (args.length !== 3 || !["repulse", "slow", "grab", "attract"].includes(clickSetting)) {
+                        terminal.writeln("  particles click <option> - Update colors. Default is repulse.");
+                        terminal.writeln("      Options: repulse, slow, grab, attract.");
+                        terminal.writeln("  e.g. `particles click grab`");
+                        break;
+                    }
+                    updateParticlesConfig({ interactivity: { events: { onClick: { enable: true } } } });
+                    updateParticlesConfig({ interactivity: { events: { onClick: { mode: clickSetting } } } });
+                    terminal.writeln(`\rUpdated particles click mode to ${clickSetting}`);
                 }
                 else {
                     terminal.writeln(`Command not found: ${command}`);

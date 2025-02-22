@@ -32,7 +32,7 @@
         "events": {
             "onClick": {
                 "enable": false,
-                "mode": []
+                "mode": "attract"
             },
             "onDiv": {
                 "selectors": [
