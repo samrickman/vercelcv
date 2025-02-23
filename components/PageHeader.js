@@ -8,7 +8,7 @@ export default function PageHeader() {
         <Image src="/portrait4.png" alt="Sam Rickman" width={128} height={128} className="object-cover" />
       </div>
       <h1 className="text-4xl font-bold">Sam Rickman</h1>
-      <p className="text-lg">Data Scientist | NLP Researcher | AI in Public Services</p>
+      <p className="text-lg">Data Scientist | Evaluating LLMs | AI in Public Services</p>
     </header>
   )
 }
