@@ -248,6 +248,7 @@ export default function CVHackerTerminal() {
                 terminal.writeln("  particles opacity <number>  - Update particle opacity. Default is 0.5. Range: 0.0 - 1.0.");
                 terminal.writeln("  particles speed <number>  - Update particle speed. Default is 0.7.");
                 terminal.writeln("      Note: Values > 25 may cause nausea.");
+                terminal.writeln("  particles size <number>  - Update particle max size. Default is 3.");
                 terminal.writeln("  particles color <option> - Update colors. Default is medium.");
                 terminal.writeln("      Options: none, medium, high.");
                 terminal.writeln("  particles hover <option> - Update hover action. Default is repulse.");
@@ -265,7 +266,8 @@ export default function CVHackerTerminal() {
                 else if (command.startsWith("particles num")) {
                     const args = command.split(" ");
                     if (args.length !== 3 || isNaN(args[2])) {
-                        terminal.writeln("Usage: particles num <number>");
+                        terminal.writeln("Usage: particles num <number>. Default is 100.");
+                        terminal.writeln("      Note: Values > ~500 may be slow to render.");
                         break;
                     }
                     const numParticles = parseInt(args[2], 10);
@@ -299,7 +301,21 @@ export default function CVHackerTerminal() {
                     const speed = parseFloat(args[2], 10);
                     updateParticlesConfig({ particles: { move: { speed: speed } } });
                     terminal.writeln(`\rUpdated particles speed to ${speed}`);
-                } else if (command.startsWith("particles color")) {
+                }
+                else if (command.startsWith("particles size")) {
+                    const args = command.split(" ");
+                    if (args.length !== 3 || isNaN(args[2])) {
+                        terminal.writeln("Usage: particles size <number>. Default is 3.");
+                        break;
+                    }
+                    const particleSize = parseFloat(args[2], 10);
+                    // Also update the size of the links proportionately
+                    const linkWidth = particleSize / 3;
+                    updateParticlesConfig({ particles: { size: { value: { max: particleSize } } } });
+                    updateParticlesConfig({ particles: { links: { width: linkWidth } } });
+                    terminal.writeln(`\rUpdated particles max size to ${particleSize}`);
+                }
+                else if (command.startsWith("particles color")) {
                     const args = command.split(" ");
                     const colorSetting = args[2];
                     if (args.length !== 3 || !["none", "medium", "high"].includes(colorSetting)) {
