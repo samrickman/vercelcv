@@ -362,5 +362,10 @@ export default function CVHackerTerminal() {
         prompt(terminal);
     };
 
-    return <div ref={terminalRef} className="h-[400px] w-full bg-black z-[10]" />;
+    return (
+        <section>
+            <div className="opacity-100 sm:opacity-0"><p><em>Hacker mode is best viewed on desktop.</em></p></div>
+            <div ref={terminalRef} className="h-[400px] w-full bg-black z-[10]" />
+        </section>
+    );
 }
