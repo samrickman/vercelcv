@@ -249,6 +249,7 @@ export default function CVHackerTerminal() {
                 terminal.writeln("  particles speed <number>  - Update particle speed. Default is 0.7.");
                 terminal.writeln("      Note: Values > 25 may cause nausea.");
                 terminal.writeln("  particles size <number>  - Update particle max size. Default is 3.");
+                terminal.writeln("  particles links <number>  - Update distance where links between particles are made.\r\n      Default is 100.");
                 terminal.writeln("  particles color <option> - Update colors. Default is medium.");
                 terminal.writeln("      Options: none, medium, high.");
                 terminal.writeln("  particles hover <option> - Update hover action. Default is repulse.");
@@ -314,6 +315,17 @@ export default function CVHackerTerminal() {
                     updateParticlesConfig({ particles: { size: { value: { max: particleSize } } } });
                     updateParticlesConfig({ particles: { links: { width: linkWidth } } });
                     terminal.writeln(`\rUpdated particles max size to ${particleSize}`);
+                }
+                else if (command.startsWith("particles links")) {
+                    const args = command.split(" ");
+                    if (args.length !== 3 || isNaN(args[2])) {
+                        terminal.writeln("Usage: particles links <number>. Default is 100.");
+                        break;
+                    }
+                    const linkDistance = parseFloat(args[2], 10);
+                    updateParticlesConfig({ particles: { links: { distance: linkDistance } } });
+
+                    terminal.writeln(`\rUpdated particles link distance to ${linkDistance}`);
                 }
                 else if (command.startsWith("particles color")) {
                     const args = command.split(" ");
