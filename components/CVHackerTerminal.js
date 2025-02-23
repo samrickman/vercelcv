@@ -44,7 +44,9 @@ export default function CVHackerTerminal() {
                 const pageSize = 12; // About the size of the xterm terminal
 
                 // If the file is short, just print it and return
-                if (lines.length <= pageSize) {
+                // or if it starts with an escape character (i.e. is ANSI image)
+                // it's index 1 because the first character of cat.txt is a new line so it all lines up
+                if (lines.length <= pageSize || text[1] === "\u001b") {
                     for (let i = 0; i < lines.length; i++) {
                         terminal.writeln(lines[i]);
                     }
