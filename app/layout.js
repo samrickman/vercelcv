@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import { DetailLevelProvider, useDetailLevel } from "@/context/DetailLevelContext";
-import BackgroundManager from "@/components/BackgroundManager"; // Import the client component
+import BackgroundManager from "@/components/BackgroundManager"; // for "pastoral mode"
 
 
 const geistSans = Geist({

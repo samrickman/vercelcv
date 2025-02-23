@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import { useDetailLevel } from "@/context/DetailLevelContext";
 
 /** 
  * TabContext allows any child component to access `activeTab` and `handleTabChange`.
@@ -18,7 +19,11 @@ export const TabContext = createContext({
 export default function NavbarWrapper({ children }) {
   const [activeTab, setActiveTab] = useState("home");
 
+  // so we can automatically move out of pastoral mode
+  // if the user changes tab
+  const { detailLevel, setDetailLevel } = useDetailLevel();
   const handleTabChange = (tabId) => {
+    setDetailLevel(2);
     setActiveTab(tabId);
     window.history.pushState({ tab: tabId }, "", "#" + tabId);
   };

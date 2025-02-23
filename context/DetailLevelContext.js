@@ -5,7 +5,7 @@ import { createContext, useState, useContext } from "react";
 const DetailLevelContext = createContext();
 
 export function DetailLevelProvider({ children }) {
-    const [detailLevel, setDetailLevel] = useState(2); // Default is "Default" mode
+    const [detailLevel, setDetailLevel] = useState(2); // Default
 
     return (
         <DetailLevelContext.Provider value={{ detailLevel, setDetailLevel }}>
