@@ -19,7 +19,6 @@ body {
   background-repeat: no-repeat;
   z-index: 1;
 }
-
 .pastoral-attribution {
   position: fixed;
   bottom: 10px;
@@ -31,7 +30,20 @@ body {
   border-radius: 5px;
   text-align: center;
   z-index: 20;
+
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out 1.5s forwards;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 .pastoral-attribution a {
   color: #ffffff;
