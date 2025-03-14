@@ -67,10 +67,19 @@ export default function RootLayout({ children }) {
     "hasOccupation": {
       "@type": "Occupation",
       "name": "Research Fellow",
-      "occupationLocation": {
-        "@type": "Place",
-        "name": "London School of Economics"
-      }
+      "estimatedSalary": [
+        {
+          "@type": "MonetaryAmountDistribution",
+          "name": "base",
+          "currency": "GBP",
+          "duration": "P1Y",
+          "median": 60000,
+        }
+      ],
+      "occupationLocation": [{
+        "@type": "City",
+        "name": "London"
+      }]
     },
     "worksFor": {
       "@type": "Organization",
@@ -95,6 +104,7 @@ export default function RootLayout({ children }) {
         "author": { "@type": "Person", "name": "Sam Rickman" },
         "datePublished": "2024-10-01",
         "publisher": { "@type": "Organization", "name": "PLOS One" },
+        "url": "https://doi.org/10.21203/rs.3.rs-5166499/v2",
         "mainEntityOfPage": { "@type": "WebPage", "@id": "https://doi.org/10.21203/rs.3.rs-5166499/v2" }
       },
       {
@@ -103,6 +113,7 @@ export default function RootLayout({ children }) {
         "author": { "@type": "Person", "name": "Sam Rickman" },
         "datePublished": "2025-01-15",
         "publisher": { "@type": "Organization", "name": "Innovation in Aging" },
+        "url": "https://doi.org/10.1093/geroni/igaf010",
         "mainEntityOfPage": { "@type": "WebPage", "@id": "https://doi.org/10.1093/geroni/igaf010" }
       },
       {
@@ -111,6 +122,7 @@ export default function RootLayout({ children }) {
         "author": { "@type": "Person", "name": "Sam Rickman" },
         "datePublished": "2025-02-10",
         "publisher": { "@type": "Organization", "name": "PLOS One" },
+        "url": "https://eprints.lse.ac.uk/127374/",
         "mainEntityOfPage": { "@type": "WebPage", "@id": "https://eprints.lse.ac.uk/127374/" }
       }
     ],
