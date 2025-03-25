@@ -108,6 +108,15 @@ export const metadata = {
         },
         {
           "@type": "ScholarlyArticle",
+          "headline": "Evaluating Gender Bias in Large Language Models in Long-Term Care",
+          "author": { "@type": "Person", "name": "Sam Rickman", "url": "http://www.samrickman.com" },
+          "datePublished": "2025-03-21T18:00",
+          "publisher": { "@type": "Organization", "name": "Adult Social Care Policy Research Unit (ASCRU) report" },
+          "url": "https://ascru.nihr.ac.uk/wp-content/uploads/2025/03/rickman-2025-evaluating-gender-bias-cpec-working-paper.pdf",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ascru.nihr.ac.uk/wp-content/uploads/2025/03/rickman-2025-evaluating-gender-bias-cpec-working-paper.pdf" }
+        },
+        {
+          "@type": "ScholarlyArticle",
           "headline": "Loneliness as a Risk Factor for Time to Care Home Entry for Older Adults Receiving Community Care",
           "author": { "@type": "Person", "name": "Sam Rickman" },
           "datePublished": "2025-01-15",

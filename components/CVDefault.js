@@ -85,7 +85,7 @@ export default function CVDefault() {
       <Section title="Selected Research & Reports">
         <List
           items={[
-            `Rickman, S. (2024) <a href="https://doi.org/10.21203/rs.3.rs-5166499/v2" target="_blank">Evaluating Gender Bias in Large Language Models</a> (preprint)`,
+            `Rickman, S. (2025) <a href="https://ascru.nihr.ac.uk/wp-content/uploads/2025/03/rickman-2025-evaluating-gender-bias-cpec-working-paper.pdf" target="_blank">Evaluating Gender Bias in Large Language Models</a>`,
             `Rickman, S., Fernandez, J. L., & Malley, J. (2025). <a href="https://academic.oup.com/innovateage/advance-article/doi/10.1093/geroni/igaf010/8005829" target="_blank">Loneliness as a risk factor for time to care home entry for older adults receiving community care.</a> <em>Innovation in Aging</em>, igaf010.`,
             `Rickman, S., Fernandez, J. L., & Malley, J. (2025). <a href="https://eprints.lse.ac.uk/127374/" target="_blank">Understanding patterns of loneliness in older long-term care users using natural language processing with free text case notes.</a> <em>PLOS One</em>.`,
             `Rickman, S. (2024) <em>Analysing Variability in Systems for Joint Working</em> – Investigating NLP methods for understanding regional social care policies.`,

@@ -91,6 +91,15 @@ export default function Head() {
                 "publisher": { "@type": "Organization", "name": "Research Square (pre-print)" },
                 "url": "https://doi.org/10.21203/rs.3.rs-5166499/v2",
                 "mainEntityOfPage": { "@type": "WebPage", "@id": "https://doi.org/10.21203/rs.3.rs-5166499/v2" }
+              }, 
+              {
+                "@type": "ScholarlyArticle",
+                "headline": "Evaluating Gender Bias in Large Language Models in Long-Term Care",
+                "author": { "@type": "Person", "name": "Sam Rickman", "url": "http://www.samrickman.com" },
+                "datePublished": "2025-03-21T18:00",
+                "publisher": { "@type": "Organization", "name": "Adult Social Care Policy Research Unit (ASCRU) report" },
+                "url": "https://ascru.nihr.ac.uk/wp-content/uploads/2025/03/rickman-2025-evaluating-gender-bias-cpec-working-paper.pdf",
+                "mainEntityOfPage": { "@type": "WebPage", "@id": "https://ascru.nihr.ac.uk/wp-content/uploads/2025/03/rickman-2025-evaluating-gender-bias-cpec-working-paper.pdf" }
               },
               {
                 "@type": "ScholarlyArticle",
