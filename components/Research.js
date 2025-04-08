@@ -10,7 +10,7 @@ export default function Research({ handleTabChange }) {
   ];
 
   const paperOneLinks = [
-    { href: "https://eprints.lse.ac.uk/127374/", label: "Read the paper" },
+    { href: "https://doi.org/10.1371/journal.pone.0319745", label: "Read the paper" },
     { href: "https://github.com/samrickman/lonelinessmodel", label: "View on GitHub" },
   ];
 
@@ -61,9 +61,7 @@ export default function Research({ handleTabChange }) {
         <Text txt="
           This research applies NLP to over 1.1 million free-text case notes to identify loneliness in older adults.  
           Using a <span className='font-semibold'>transformer-based model with an F1 score of 0.92</span>, it validates loneliness indicators against external datasets,  
-          demonstrating the feasibility of extracting social determinants of health from administrative records.
-          
-          <div><sub><em>In press (February 2025)</em></sub></div>"
+          demonstrating the feasibility of extracting social determinants of health from administrative records."
         />
         <div className="mt-2">
           <div className="flex flex-wrap gap-4 items-center mt-2">

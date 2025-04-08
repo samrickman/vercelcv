@@ -38,7 +38,7 @@ export default function CVEssentials() {
                 <List
                     items={[
                         `<a href="https://ascru.nihr.ac.uk/wp-content/uploads/2025/03/rickman-2025-evaluating-gender-bias-cpec-working-paper.pdf" target="_blank">Evaluating gender bias in LLMs in long-term care</a>`,
-                        `<a href="https://eprints.lse.ac.uk/127374/" target="_blank">Extracting loneliness information from free text administrative data using LLMs</a>`,
+                        `<a href="https://doi.org/10.1371/journal.pone.0319745" target="_blank">Extracting loneliness information from free text administrative data using LLMs</a>`,
                         `<a href="https://academic.oup.com/innovateage/advance-article/doi/10.1093/geroni/igaf010/8005829" target="_blank">Predicting care home entry from LLM-extracted loneliness</a>`,
                     ]}
                 />

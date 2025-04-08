@@ -128,10 +128,10 @@ export const metadata = {
           "@type": "ScholarlyArticle",
           "headline": "Understanding Patterns of Loneliness in Older Long-Term Care Users Using NLP",
           "author": { "@type": "Person", "name": "Sam Rickman" },
-          "datePublished": "2025-02-10",
+          "datePublished": "2025-04-02",
           "publisher": { "@type": "Organization", "name": "PLOS One" },
-          "url": "https://eprints.lse.ac.uk/127374/",
-          "mainEntityOfPage": { "@type": "WebPage", "@id": "https://eprints.lse.ac.uk/127374/" }
+          "url": "https://doi.org/10.1371/journal.pone.0319745",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": "https://doi.org/10.1371/journal.pone.0319745" }
         }
       ],
       "performerIn": [
