@@ -137,6 +137,26 @@ export const metadata = {
       "performerIn": [
         {
           "@type": "Event",
+          "name": "Fairness in LLMs in the Public Sector",
+          "organizer": "LSE International Inequalities Institute",
+          "performer": "Sam Rickman",
+          "eventStatus": "https://schema.org/EventScheduled",
+          "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+          "startDate": "2025-09-18T14:00",
+          "location": {
+            "@type": "Place",
+            "name": " London School of Economics",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Houghton St",
+              "addressLocality": "London",
+              "postalCode": "WC2A 2AE",
+              "addressCountry": "UK"
+            }
+          }
+        },
+        {
+          "@type": "Event",
           "name": "AI Bias in Social Care",
           "startDate": "2024-11-15T18:00",
           "location": {

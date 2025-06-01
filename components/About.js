@@ -1,6 +1,9 @@
 import Text from "./Text";
+import { TabContext } from "@/components/NavbarWrapper";
+import { useContext } from "react";
 
 export default function About() {
+  const { activeTab, handleTabChange } = useContext(TabContext);
   return (
     <section className="p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold">About Me</h2>
@@ -16,6 +19,29 @@ export default function About() {
       <Text txt="
         My Social and Political Science degree at Cambridge gave me a strong grounding in how institutions shape society, which informs my work developing and evaluating AI in public services.
       "/>
+
+      <h2 className="text-2xl font-semibold mt-4">Upcoming events</h2>
+      <Text txt="
+        - September 18th - 19th 2025. LSE <a href='https://www.lse.ac.uk/International-Inequalities/10th-Anniversary/Conference' target='_blank'>International Inequalities Institute Conference</a> (London). <em>Fairness in LLMs in the public sector.</em>
+      "/>
+      <p className="mt-4">
+        To see past presentations visit my
+        <button
+          className="font-semibold hover:underline ml-2 mr-2"
+          onClick={() => handleTabChange("research")}
+        >
+          research
+        </button>
+        page or for GOLTC Data Science events and webinars see my
+
+        <button
+          className="font-semibold hover:underline ml-2 mr-2"
+          onClick={() => handleTabChange("misc")}
+        >
+          other
+        </button>
+        projects.
+      </p>
     </section>
   );
 }
