@@ -1,5 +1,5 @@
 import SectionFooterLinks from "./SectionFooterLinks";
-import Text from "./Text"
+import Text from "./Text";
 
 export default function Misc() {
 
@@ -8,34 +8,34 @@ export default function Misc() {
     { href: "https://github.com/samrickman/goltc-webinar-chatgpt-accuracy-bias", label: "View on GitHub" },
     { href: "https://goltc.org/videos/?fwp_ppl_groups=data-science", label: "All GOLTC webinars" },
   ];
-  
+
   const imbalancedClassifierLinks = [
     { href: "https://github.com/samrickman/imbalanced-classifier-comparison", label: "View on GitHub" },
   ];
-  
+
   const plottingPoetryLinks = [
     { href: "https://www.youtube.com/watch?v=bP8osv_z8b8&t=2201s", label: "Watch on YouTube" },
     { href: "https://github.com/samrickman/plotting-poetry", label: "View on GitHub" },
   ];
-  
+
   const mapsCartogramsLinks = [
     { href: "https://mode2.ltd/r-charts/index.html", label: "Read the blog post" },
     { href: "https://github.com/samrickman/goltc-dsn-maps-cartograms-blog", label: "View on GitHub" },
   ];
-  
+
   const krippAlphaLinks = [
     { href: "https://github.com/samrickman/krippendorf-alpha-cohen-kappa-simulation", label: "View on GitHub" },
   ];
-  
+
   const aethelredLinks = [
     { href: "https://github.com/samrickman/aethelreds-adventure", label: "View on GitHub" },
     { href: "https://aethelreds-adventure-production.up.railway.app/", label: "Play online (not mobile-friendly)" },
   ];
-  
+
   const tcoLinks = [
     { href: "https://stackoverflow.com/questions/78979492/optimization-of-tail-recursion-in-r/78989350#78989350", label: "Read on Stack Overflow" },
-  ];		
-      
+  ];
+
 
 
   return (
@@ -68,7 +68,7 @@ export default function Misc() {
         </ul>
 
         <SectionFooterLinks links={goltcLinks} />
-        
+
       </div>
 
 
@@ -140,34 +140,34 @@ export default function Misc() {
       </div>
 
 
-    {/* Optimisation of Tail Recursion in R */}
-    <div className="mt-6">
-      <h3 className="text-xl font-semibold">
-        Optimisation of Tail Recursion in R
-      </h3>
-      <Text txt="
+      {/* Optimisation of Tail Recursion in R */}
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold">
+          Optimisation of Tail Recursion in R
+        </h3>
+        <Text txt="
         A deep dive into <span className='font-semibold'>Tail Call Optimisation (TCO)</span>, introduced in R 4.4.0, 
         exploring how it works and how it differs from TCO implemented in C by gcc.
       "/>
-      <Text txt="
+        <Text txt="
         Unlike some other implementations, R’s TCO does not reuse the same stack frame or rewrite recursion as a loop. 
         Instead, R's TCO prevents the stack depth from increasing on each call, avoiding stack overflow errors in 
         deeply recursive functions. However, the added overhead means R's Tailcall() does not necessarily improve performance. In fact, 
         it can be slower than standard recursion.
       "/>
 
-      <SectionFooterLinks links={tcoLinks} />
+        <SectionFooterLinks links={tcoLinks} />
 
 
-      <div className="mt-0 float-right">
-        <a href="https://stackoverflow.com/users/12545041/samr" target="_blank" rel="noopener noreferrer">
-          <img src="https://stackoverflow.com/users/flair/12545041.png?theme=dark" width="208" height="58" alt="profile for Sam Rickman on Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
-        </a>        
-      </div>
-      <Text txt="
+        <div className="mt-0 float-right">
+          <a href="https://stackoverflow.com/users/12545041/samr" target="_blank" rel="noopener noreferrer">
+            <img src="https://stackoverflow.com/users/flair/12545041.png?theme=dark" width="208" height="58" alt="profile for Sam Rickman on Stack Overflow, Q&amp;A for professional and enthusiast programmers" />
+          </a>
+        </div>
+        <Text txt="
         I actively participate in the Stack Overflow community, answering questions on data science, R, Python, and programming concepts.
-      " className="mt-2 "/>      
-    </div>
+      " className="mt-2 " />
+      </div>
 
       {/* Open Source Contributions */}
       <div className="mt-6">
@@ -189,7 +189,9 @@ export default function Misc() {
           <li>
             <a href="https://github.com/therneau/survival" className="">
               <code>survival</code>
-            </a> – R package for survival analysis.
+            </a> and <a href="https://github.com/pharmaverse/ggsurvfit" className="">
+              <code>ggsurvfit</code>
+            </a> – R packages for survival analysis.
           </li>
         </ul>
       </div>
