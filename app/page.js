@@ -1,17 +1,17 @@
 "use client";
 
-import { useContext } from "react";
 import About from "@/components/About";
+import BlogViewer from '@/components/BlogViewer';
+import ContactFooter from "@/components/ContactFooter";
 import CV from "@/components/CV";
-import Research from "@/components/Research";
-import Misc from "@/components/Misc";
-import { TabContext } from "@/components/NavbarWrapper";
+import FrontPageContent from "@/components/FrontPageContent";
 import GenderBiasPresentation from "@/components/GenderBiasPresentation";
 import LonelinessPresentation from "@/components/LonelinessPresentation";
-import ContactFooter from "@/components/ContactFooter";
-import FrontPageContent from "@/components/FrontPageContent";
+import Misc from "@/components/Misc";
+import { TabContext } from "@/components/NavbarWrapper";
 import PageHeader from "@/components/PageHeader";
-
+import Research from "@/components/Research";
+import { useContext } from "react";
 export default function Home() {
   // retrieve activeTab and handleTabChange from our TabContext
   const { activeTab, handleTabChange } = useContext(TabContext);
@@ -21,18 +21,20 @@ export default function Home() {
       case "about":
         return <About />;
       case "cv":
-        return <CV handleTabChange={handleTabChange}/>;
+        return <CV handleTabChange={handleTabChange} />;
       case "research":
-        return <Research handleTabChange={handleTabChange}/>;
+        return <Research handleTabChange={handleTabChange} />;
       case "misc":
         return <Misc />;
+      case "blog":
+        return <BlogViewer />;
       case "genderbiaspresentation":
-          return<GenderBiasPresentation />;
+        return <GenderBiasPresentation />;
       case "lonelinesspresentation":
-          return<LonelinessPresentation />;
+        return <LonelinessPresentation />;
       default:
         return (
-          <FrontPageContent handleTabChange={handleTabChange}/>
+          <FrontPageContent handleTabChange={handleTabChange} />
 
         );
     }
@@ -40,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <PageHeader/>
+      <PageHeader />
       {renderContent()}
       <ContactFooter />
     </div>
