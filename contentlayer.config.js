@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 
 export const Blog = defineDocumentType(() => ({
     name: 'Blog',
@@ -14,4 +14,9 @@ export const Blog = defineDocumentType(() => ({
 export default makeSource({
     contentDirPath: 'content',
     documentTypes: [Blog],
+    mdx: {
+        esbuildOptions: (opts) => {
+            return { ...opts, jsxDev: false };   // force prod JSX runtime everywhere
+        },
+    },
 })
