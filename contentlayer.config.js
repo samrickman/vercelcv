@@ -14,11 +14,4 @@ export const Blog = defineDocumentType(() => ({
 export default makeSource({
     contentDirPath: 'content',
     documentTypes: [Blog],
-    /* 👇 force production JSX runtime */
-    mdx: {
-        jsx: 'automatic',
-        esbuildOptions: (opts) => {
-            opts.jsxDev = false        // to avoid blog crash on live site
-        },
-    },
 })
