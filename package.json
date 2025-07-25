@@ -9,6 +9,9 @@
     "lint": "next lint",
     "postinstall": "pnpm contentlayer build || true"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "@contentlayer/client": "^0.3.4",
     "@next/mdx": "^15.4.4",
