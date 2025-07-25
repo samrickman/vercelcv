@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   z-index: 1;
 }
+
 .pastoral-attribution {
   position: fixed;
   bottom: 10px;
@@ -39,6 +40,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -134,6 +136,11 @@ li {
 
 li:hover {
   color: #dae0e6;
+}
+
+li:hover .no-hover-inherit {
+  color: #8B949E;
+  /* For e.g. date in the blog post list which shouldn't hover */
 }
 
 .navbar {

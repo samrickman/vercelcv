@@ -3,6 +3,7 @@
 import { useMDXComponent } from 'next-contentlayer/hooks';
 import { useEffect, useState } from 'react';
 import { allBlogs } from '../.contentlayer/generated';
+import Text from "./Text";
 
 /* ---  valid stub that the MDX runtime can eval  --- */
 const PLACEHOLDER_MDX = `
@@ -39,6 +40,7 @@ export default function BlogViewer() {
                 /* -------- blog index -------- */
                 <>
                     <h1 className="text-2xl font-bold">Blog</h1>
+                    <Text txt="I’ll be posting about AI evaluation, public sector applications, and what goes wrong when models meet the real world. Check back in a few days for updates (25 July 2025)." />
                     <br></br>
                     <ul>
                         {allBlogs.map((p) => (
@@ -54,6 +56,7 @@ export default function BlogViewer() {
                                 </button>
 
                                 <span className="ml-2 text-sm no-hover-inherit">{formatDate(p.date)}</span>
+                                <div><p>{p.summary}</p></div>
 
                             </li>
                         ))}
@@ -70,6 +73,7 @@ export default function BlogViewer() {
                     </button>
                     <h1 className="text-2xl font-bold">{post.title}</h1>
                     <p className="text-sm font-bold">{formatDate(post.date)}</p>
+
                     <br></br>
                     <MDXContent />
                 </>

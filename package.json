@@ -6,15 +6,21 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "pnpm contentlayer build || true"
   },
   "dependencies": {
+    "@contentlayer/client": "^0.3.4",
+    "@next/mdx": "^15.4.4",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.8.1",
     "@xterm/xterm": "^5.5.0",
+    "contentlayer": "^0.3.4",
     "framer-motion": "^12.4.3",
+    "gray-matter": "^4.0.3",
     "next": "15.1.7",
+    "next-contentlayer": "^0.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0"
@@ -28,7 +34,10 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@tsparticles/engine"
+      "@tsparticles/engine",
+      "contentlayer",
+      "esbuild",
+      "protobufjs"
     ]
   }
 }

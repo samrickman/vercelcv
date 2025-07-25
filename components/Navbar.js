@@ -8,6 +8,7 @@ export default function Navbar({ activeTab, handleTabChange }) {
     { id: "about", label: "About Me" },
     { id: "cv", label: "CV" },
     { id: "research", label: "Research" },
+    { id: "blog", label: "Blog" },
     { id: "misc", label: "Misc" },
   ];
 
@@ -26,9 +27,9 @@ export default function Navbar({ activeTab, handleTabChange }) {
             </button>
           </li>
         ))}
-      <DarkModeToggle />
+        <DarkModeToggle />
       </ul>
-        
+
     </nav>
   );
 }
