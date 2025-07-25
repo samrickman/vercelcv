@@ -11,9 +11,8 @@
 !.yarn/versions
 
 # generated stuff
-v8-compile-cache-0/
-
-.contentlayer/
+/.contentlayer/
+/v8-compile-cache-0/
 
 # testing
 /coverage
