@@ -10,6 +10,11 @@
 !.yarn/releases
 !.yarn/versions
 
+# generated stuff
+v8-compile-cache-0/
+
+.contentlayer/
+
 # testing
 /coverage
 
