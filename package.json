@@ -22,14 +22,20 @@
     "contentlayer": "^0.3.4",
     "framer-motion": "^12.4.3",
     "gray-matter": "^4.0.3",
+    "katex": "^0.16.22",
+    "mdast-util-math": "2.0.1",
     "next": "15.1.7",
     "next-contentlayer": "^0.3.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.4.0",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^2.0.0",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/typography": "^0.5.16",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
@@ -41,7 +47,10 @@
       "contentlayer",
       "esbuild",
       "protobufjs"
-    ]
+    ],
+    "overrides": {
+      "mdast-util-math": "2.0.1"
+    }
   },
   "packageManager": "pnpm@8.15.9+sha512.499434c9d8fdd1a2794ebf4552b3b25c0a633abcee5bb15e7b5de90f32f47b513aca98cd5cfd001c31f0db454bc3804edccd578501e4ca293a6816166bbd9f81"
 }
