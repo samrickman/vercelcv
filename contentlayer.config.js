@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-
+// This tells Contentlayer/MDX to use the React JSX runtime (for blog)
+process.env.NODE_ENV = 'production' // or 'production' during builds
+process.env.CONTENTLAYER_CLI = 'next'
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: `blog/*.mdx`,
