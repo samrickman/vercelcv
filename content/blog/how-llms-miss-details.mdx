@@ -1,7 +1,125 @@
 ---
-title: "How LLMs Miss Key Details"
-date: "2025-07-25"
-summary: "What happens when generative models overlook the important stuff"
+title: "Evaluating LLM summarisation in high-stakes health, justice, and care settings"
+date: "2025-08-06"
+summary: "What happens when generative models overlook the important stuff?"
 ---
 
-Expect a blog post about [Evaluating LLM summarisation in high-stakes health, justice, and care settings](https://github.com/samrickman/llm-eval-criminal-justice) in a few days (by early August 2025).
+Large language models (LLMs) are trained with strong safeguards to prevent them from generating harmful or offensive content, such as violent threats or extremist language. But there are situations — such as counter-terrorism, probation risk assessments, and forensic mental health — where including such material is essential. A model describing domestic abuse, violent assault, or hate speech must include the details that matter, even if they're disturbing or graphic.
+
+## Why this matters
+
+LLMs are increasingly used in settings like [probation](https://ai.justice.gov.uk/blog/welcome-to-the-blog), [safeguarding](https://www.oxford-aiethics.ox.ac.uk/oxford-statement-responsible-use-generative-ai-adult-social-care), and [mental health](https://openai.com/solutions/healthcare/), where they can free-up staff time by automatically generating documentation, and improve information flow by summarising large volumes of historical records. But in these domains, factual completeness matters. Missing a key detail is not a minor error — it can mean failing to record abuse, omitting critical aspects of a crime, or underestimating the risk to the public.
+
+This risk is easy to miss. Summaries that appear fluent and plausible can still be incomplete — and this can go unnoticed. Much of the existing research focuses on refusal behaviour — what prompts a model to say "I can’t help with that." But an equally serious danger is when a model silently omits key information. These omissions are harder to detect, yet can lead to flawed decisions based on misleadingly confident summaries.
+
+This project — [Evaluating LLM summarisation in high-stakes health, justice, and care settings](https://github.com/samrickman/llm-eval-criminal-justice) — tests whether large language models (LLMs) include the right information when summarising long, procedurally rich legal texts. It uses a new evaluation method built around *synthetic, realistic sentencing remarks* in cases of shoplifting and terrorism. The project investigates whether models are more likely to silently omit certain details in certain types of cases by asking LLMs to extract key details from criminal-justice style case vignettes. These are texts of over 3000 words relating to different crimes where:
+
+- **Ground-truth facts** relating to public safety are embedded in procedurally realistic noise.
+- **Distractor details** are added to test for plausible-sounding false positives.
+- **Model summaries** are evaluated on whether they include each relevant fact.
+
+## Findings (so far)
+
+The project generates 509 case vignettes (240 shoplifting, 269 terrorism). Six LLMs are asked to extract key facts relating to the offending behaviour from the vignettes. Models scored fairly strongly overall, with an average accuracy of 0.95 for shoplifting and 0.87 for terrorism. However:
+
+* **All models performed significantly worse on terrorism cases than on shoplifting**.
+* In a mixed-effects logistic model adjusting for vignette and model variation, terrorism summaries were about **40% as likely** as shoplifting summaries to include any given fact (OR = 0.40, 95% CI ≈ \[0.36, 0.44]).
+* Performance gaps varied sharply across models:
+  * **Claude 3 Haiku**: odds of including a correct fact were **33% lower** in terrorism than in shoplifting (OR = 0.67).
+  * **GPT-4o**: odds were **80% lower** (OR = 0.20).
+  * **Grok-3-mini** showed the steepest drop, with odds **98.7% lower** in terrorism (OR = 0.013). However, this is mostly driven by the fact that it outperformed all other models on shoplifting, with an accuracy of 0.9975, highlighting the need for caution in interpreting odds ratios alone.
+* All models showed consistent drops when required to include **offensive, violent, or politically sensitive content** — suggesting a **potential reluctance to include risk-relevant facts** in safety-critical settings.
+
+The plot below shows the distribution of accuracy scores across shoplifting and terrorism with the six models tested. In all cases, accuracy is higher for shoplifting than terrorism cases.
+
+![Distribution of accuracy scores](blog/criminal-justice-vignettes/accuracy_distribution_cosine_similarity.png)
+
+The model where there is the least difference between shoplifting and terrorism appears to be `google/gemini-1.5-flash`. To investigate this, a mixed-effects binomial logistic regression was fitted, estimating the number of correct facts included in each summary, out of the total facts. The model includes fixed effects for `task` (shoplifting vs terrorism), `model` (LLM), and their interaction, with a random intercept for each vignette (`id`) to account for variation in document difficulty.
+
+The equation is:
+
+$$
+\text{logit} \left( \Pr(\text{correct}) \right) = \beta_0 + \beta_1 \cdot \texttt{task} + \beta_2 \cdot \texttt{model} + \beta_3 \cdot (\texttt{task} \times \texttt{model}) + u_{\texttt{id}}
+$$
+
+$$
+\quad u_{\texttt{id}} \sim \mathcal{N}(0, \sigma^2)
+$$
+
+The table below presents accuracy and odds ratios for each LLM.
+
+| Contrast                | Model                             | Odds ratio | Accuracy (Shoplifting) | Accuracy (Terrorism) |
+|:------------------------|:----------------------------------|-----------:|------------------------:|----------------------:|
+| Terrorism / Shoplifting | anthropic/claude-3-haiku-20240307 |      0.669 *** |                  0.771 |                0.694 |
+| Terrorism / Shoplifting | google/gemini-1.5-flash           |      0.726 *   |                  0.954 |                0.937 |
+| Terrorism / Shoplifting | google/gemini-2.5-flash-lite      |      0.390 *** |                  0.969 |                0.924 |
+| Terrorism / Shoplifting | grok/grok-3-mini                  |      0.013 *** |                  0.999 |                0.924 |
+| Terrorism / Shoplifting | openai/gpt-4.1-mini-2025-04-14    |      0.382 *** |                  0.941 |                0.860 |
+| Terrorism / Shoplifting | openai/gpt-4o-mini-2024-07-18     |      0.203 *** |                  0.926 |                0.718 |
+
+Key points:
+
+- **All models performed worse on terrorism than on shoplifting.**
+- The average odds of including a key fact in terrorism summaries were **60% lower**.
+- **GPT-4o**, despite high performance on shoplifting, showed a large drop in terrorism, and was around **80%** less likely to include terrorism facts. In **GPT-4.1** the figure is around 62%. 
+- **Gemini 1.5** had the smallest gap, but other models scored higher in shoplifting — suggesting trade-offs between safety filters and informativeness.
+
+## Cosine similarity
+
+The same patterns hold using cosine similarity as a looser metric of inclusion.  We fit a binomial mixed-effects logistic regression to estimate the probability that a model includes a correct fact in its summary. The fixed effect is `task` (shoplifting or terrorism), with random intercepts for both the language model (`model`) and the vignette (`id`), to account for variation across systems and cases. The model equation is:
+
+$$
+\text{logit} \left( \Pr(\text{correct}) \right) = \beta_0 + \beta_1 \cdot \texttt{task}_{\text{terrorism}} + u_{\texttt{model}} + u_{\texttt{id}}
+$$
+
+Where:
+
+-   $\beta_0$ is the intercept (for shoplifting),
+-   $\beta_1$ captures the effect of the terrorism task,
+-   $u_{\texttt{model}} \sim \mathcal{N}(0, \sigma^2\_{\text{model}})$
+    is the random effect for each LLM,
+-   $u_{\texttt{id}} \sim \mathcal{N}(0, \sigma^2\_{\text{id}})$ is the
+    random effect for each vignette.
+
+
+The table below presents accuracy and odds ratios for each LLM.
+
+| Contrast                | Model                             | Odds ratio | Accuracy (Shoplifting) | Accuracy (Terrorism) |
+|:------------------------|:----------------------------------|-----------:|------------------------:|----------------------:|
+| Terrorism / Shoplifting | anthropic/claude-3-haiku-20240307 |       0.624 *** |                  0.770 |                0.678 |
+| Terrorism / Shoplifting | google/gemini-1.5-flash           |       0.202 *** |                  0.954 |                0.807 |
+| Terrorism / Shoplifting | google/gemini-2.5-flash-lite      |       0.122 *** |                  0.969 |                0.795 |
+| Terrorism / Shoplifting | grok/grok-3-mini                  |       0.004 *** |                  0.999 |                0.812 |
+| Terrorism / Shoplifting | openai/gpt-4.1-mini-2025-04-14    |       0.103 *** |                  0.964 |                0.733 |
+| Terrorism / Shoplifting | openai/gpt-4o-mini-2024-07-18     |       0.121 *** |                  0.926 |                0.606 |
+
+
+![Distribution of accuracy scores (cosine similarity)](blog/criminal-justice-vignettes/accuracy_distribution_cosine_similarity.png)
+
+## What does this mean?
+
+These findings suggest that current large language models — even those considered state-of-the-art — may systematically under-include key facts when summarising safety-critical material. This isn’t just a matter of small accuracy differences. In high-risk settings, omitting a violent threat, extremist intent, or safeguarding concern is not a benign error: it can actively undermine decisions about supervision, support, or public protection.
+
+Several policy-relevant points follow:
+
+* **Fluency is not enough**: Summaries that read well can still be dangerously incomplete. Evaluation metrics must account for this, especially in regulated domains.
+
+* **Content safeguards have trade-offs**: Some models may filter or down-weight sensitive content — such as violence or hate speech — in ways that improve safety in open-ended generation but reduce reliability in forensic or legal summarisation tasks.
+
+* **Task- and domain-specific evaluation is essential**: A model that performs well on general summarisation benchmarks may still fail to capture what matters in justice, health, or care contexts. Domain-specific, fact-controlled evaluations should be part of deployment assessments.
+
+* **Different models may be needed for different tasks**: The fact that some LLMs retain more risk-relevant information — even at the cost of including more sensitive language — raises the possibility of using different models for different parts of a workflow, rather than assuming one-size-fits-all.
+
+Ultimately, this highlights a broader governance challenge: if we rely on automated tools to support decisions in safety-critical environments, we need much better tools for measuring what they leave out.
+
+## What next?
+
+This is just the start. Planned extensions include:
+
+- Testing more case types (e.g. coercive control, hate crimes, neglect).
+- Exploring model prompting strategies and system messages.
+- Adding LLM-based evaluators to complement exact match.
+- Analysing the *types* of facts most often missed.
+- Considering the policy implications of omission bias in high-stakes domains.
+
+The full results so far, code, methodology, and instructions are in the [GitHub repo](https://github.com/samrickman/llm-eval-criminal-justice). Feedback, collaboration, and critical questions are welcome.
