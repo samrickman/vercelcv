@@ -32,7 +32,7 @@ export default function BlogViewer() {
         return (
             <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
                 <h1 className="text-2xl font-bold">Blog</h1>
-                <Text txt="I’ll be posting about AI evaluation, public sector applications, and what goes wrong when models meet the real world. Check back in a few days for updates (25 July 2025)." />
+                <Text txt="I’ll be posting about AI evaluation, high-stakes LLM applications, and what goes wrong when models meet the real world." />
                 <br></br>
                 <ul>
                     {allBlogs.map((p) => (
@@ -47,7 +47,7 @@ export default function BlogViewer() {
                             <span className="ml-2 text-sm no-hover-inherit">
                                 {formatDate(p.date)}
                             </span>
-                            <div><p>{p.summary}</p></div>
+                            <p className="mt-0">{p.summary}</p>
                         </li>
                     ))}
                 </ul>
@@ -57,22 +57,25 @@ export default function BlogViewer() {
       
     /* ── Single post ── */
     return (
-        <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
-            <button
-                type="button"
-                onClick={() => setSlug(null)}
-                className="text-sm text-gray-500 mb-4"
-            >
-                ← Back to list
-            </button>
+    <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
+        <button
+        type="button"
+        onClick={() => setSlug(null)}
+        className="text-sm text-gray-500 mb-4"
+        >
+        ← Back to list
+        </button>
 
-            <h1>{post.title}</h1>
-            <p className="text-sm text-gray-500">
-                {formatDate(post.date)}
-            </p>
+        <h1>{post.title}</h1>
+        <p className="text-sm text-gray-500">
+        {formatDate(post.date)}
+        </p>
 
-            <PostComponent />
-        </div>
+        {/* 🟢 This is the important part */}
+        <article className="blog-post">
+        <PostComponent />
+        </article>
+    </div>
     )
 
 }
