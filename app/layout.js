@@ -1,8 +1,9 @@
+import BackgroundManager from "@/components/BackgroundManager"; // for "pastoral mode"
+import NavbarWrapper from "@/components/NavbarWrapper";
+import { DetailLevelProvider } from "@/context/DetailLevelContext";
+import 'katex/dist/katex.min.css';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavbarWrapper from "@/components/NavbarWrapper";
-import { DetailLevelProvider, useDetailLevel } from "@/context/DetailLevelContext";
-import BackgroundManager from "@/components/BackgroundManager"; // for "pastoral mode"
 
 
 const geistSans = Geist({
