@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
+import { useEffect, useState } from "react";
 
 export default function ParticlesBackground() {
   const [options, setOptions] = useState(null);
@@ -43,8 +43,14 @@ export default function ParticlesBackground() {
       window.removeEventListener("updateParticles", handleParticleUpdate);
     };
   }, []);
-
-  return init && options ? <Particles id="tsparticles" options={options} /> : null;
+  if (!init || !options) return null;
+  
+  return (
+    // with z-0 you can actually read the blog posts
+    <div className="fixed inset-0 z-0 pointer-events-none">
+      <Particles id="tsparticles" options={options} />
+    </div>
+  );
 }
 
 // ✅ Utility function for deep merging nested objects

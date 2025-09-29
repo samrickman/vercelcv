@@ -192,3 +192,32 @@ a:hover svg {
   color: #E6EDF3 !important;
   /* Slightly lighter gray */
 }
+
+@layer utilities {
+  .blog-post {
+    @apply bg-lightbg dark:bg-darkbg/100 opacity-100;
+    position: relative;
+    z-index: 9 !important;
+  }
+
+
+  /* Opaque background that lives inside the post */
+  .blog-post::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* under the text */
+    background: theme('colors.lightbg');
+  }
+
+  .dark .blog-post::before {
+    background: theme('colors.darkbg');
+  }
+
+  /* Ensure the actual post content paints above the overlay */
+  .blog-post>* {
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -50,7 +50,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative z-0">
       <PageHeader />
       {renderContent()}
       <ContactFooter />

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { useDetailLevel } from "@/context/DetailLevelContext";
+import { useState } from "react";
 
 export default function CvDetailSlider() {
   const { detailLevel, setDetailLevel } = useDetailLevel();
@@ -22,11 +22,11 @@ export default function CvDetailSlider() {
   };
 
   return (
-    <div className="p-4 bg-gray-100 text-black dark:bg-gray-800 dark:text-white rounded-lg border-white relative">
+    <div className={`p-4 text-black dark:text-white rounded-lg border-white relative ${detailLevel === 0 ? "bg-gray-100/0 dark:bg-gray-800/0" : "bg-gray-100 dark:bg-gray-800"}`}>
       <h3 className="text-lg font-semibold mb-4 text-center">CV detail level</h3>
 
       {/* Slider Wrapper */}
-      <div className="relative w-full flex flex-col items-center z-[2]">
+      <div className="relative w-full flex flex-col items-center z-[2] ">
         {/* Slider Bar */}
         <input
           type="range"

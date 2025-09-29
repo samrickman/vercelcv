@@ -217,19 +217,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
       <head>
         <link rel="canonical" href="https://www.samrickman.com/" />
       </head>
       <DetailLevelProvider>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <NavbarWrapper>{children}</NavbarWrapper>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
+          {/* BACKGROUND FIRST, behind everything */}
           <BackgroundManager />
+
+          {/* ALL SITE CONTENT ABOVE IT */}
+          <div id="site" className="relative z-10">
+            <NavbarWrapper>{children}</NavbarWrapper>
+          </div>
         </body>
       </DetailLevelProvider>
     </html>
   );
 }
-

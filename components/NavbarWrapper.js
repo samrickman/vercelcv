@@ -7,36 +7,47 @@ import Navbar from "./Navbar";
 
 export const TabContext = createContext({
   activeTab: "home",
-  handleTabChange: () => {},
+  handleTabChange: () => { },
 });
 
 export default function NavbarWrapper({ children }) {
   const [activeTab, setActiveTab] = useState("home");
   const { detailLevel, setDetailLevel } = useDetailLevel();
 
+
+  const VALID_TABS = new Set([
+    "home",
+    "about",
+    "cv",
+    "research",
+    "misc",
+    "blog",
+    "genderbiaspresentation",
+    "lonelinesspresentation",
+  ]);
+
   const handleTabChange = (tabId) => {
     setDetailLevel(2);
     setActiveTab(tabId);
-
+    // Keep using hashes for tab UI
     const url = new URL(window.location.href);
-    // if leaving blog tab, clear ?post to avoid getting forced back
-    if (tabId !== "blog") {
-      url.searchParams.delete("post");
-    }
-    // keep using hashes for tab UI
-    url.hash = tabId;
-    window.history.pushState({ tab: tabId }, "", url.pathname + (url.search ? "?" + url.searchParams.toString() : "") + url.hash);
+    url.hash = tabId; // preserve ?post=... etc.
+    window.history.pushState({ tab: tabId }, "", url.toString());
   };
 
   useEffect(() => {
-    const tabFromUrl = window.location.hash.replace("#", "");
-    if (tabFromUrl) {
-      setActiveTab(tabFromUrl);
-    }
+
+    // On mount, only honor known tab hashes; ignore footnote anchors
+    const raw = window.location.hash.replace("#", "");
+    if (VALID_TABS.has(raw)) setActiveTab(raw);
 
     const handlePopState = () => {
-      const tabFromUrl = window.location.hash.replace("#", "") || "home";
-      setActiveTab(tabFromUrl);
+
+      const raw = window.location.hash.replace("#", "");
+      if (VALID_TABS.has(raw)) {
+        setActiveTab(raw);
+      }
+      // Otherwise ignore non-tab hashes (e.g., #user-content-fn-1)
     };
 
     window.addEventListener("popstate", handlePopState);
