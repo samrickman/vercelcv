@@ -1,31 +1,31 @@
+// NavbarWrapper.js
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
-import Navbar from "./Navbar";
 import { useDetailLevel } from "@/context/DetailLevelContext";
+import { createContext, useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
-/** 
- * TabContext allows any child component to access `activeTab` and `handleTabChange`.
- */
 export const TabContext = createContext({
   activeTab: "home",
   handleTabChange: () => {},
 });
 
-/**
- * NavbarWrapper holds the tab state and the logic to handle tab changes.
- * It provides this state to any children via the TabContext provider.
- */
 export default function NavbarWrapper({ children }) {
   const [activeTab, setActiveTab] = useState("home");
-
-  // so we can automatically move out of pastoral mode
-  // if the user changes tab
   const { detailLevel, setDetailLevel } = useDetailLevel();
+
   const handleTabChange = (tabId) => {
     setDetailLevel(2);
     setActiveTab(tabId);
-    window.history.pushState({ tab: tabId }, "", "#" + tabId);
+
+    const url = new URL(window.location.href);
+    // if leaving blog tab, clear ?post to avoid getting forced back
+    if (tabId !== "blog") {
+      url.searchParams.delete("post");
+    }
+    // keep using hashes for tab UI
+    url.hash = tabId;
+    window.history.pushState({ tab: tabId }, "", url.pathname + (url.search ? "?" + url.searchParams.toString() : "") + url.hash);
   };
 
   useEffect(() => {
@@ -45,10 +45,7 @@ export default function NavbarWrapper({ children }) {
 
   return (
     <TabContext.Provider value={{ activeTab, handleTabChange }}>
-      {/* Navbar has direct access to activeTab/handleTabChange via props */}
       <Navbar activeTab={activeTab} handleTabChange={handleTabChange} />
-
-      {/* All the rest of the site (Particles + pages) can read from TabContext if needed */}
       {children}
     </TabContext.Provider>
   );

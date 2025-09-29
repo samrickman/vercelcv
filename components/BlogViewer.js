@@ -1,81 +1,89 @@
 'use client'
-import { useMDXComponent } from 'next-contentlayer/hooks';
-import { useState } from "react";
-import { allBlogs } from '../.contentlayer/generated';
-import Text from "./Text";
+import { useMDXComponent } from 'next-contentlayer/hooks'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useMemo } from 'react'
+import { allBlogs } from '../.contentlayer/generated'
+import Text from './Text'
 
-/*  A no‑op MDX module so the hook can run on every render  */
 const PLACEHOLDER_MDX = `
 function MDXContent() { return null }
 return { default: MDXContent }
-`;
+`
+
 export default function BlogViewer() {
-    
-    const [slug, setSlug] = useState(null)
+  const router = useRouter()
+  const pathname = usePathname()
+  const sp = useSearchParams()
+  const slug = sp.get('post')
 
-    function formatDate(dateString) {
-        return new Intl.DateTimeFormat('en-GB', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-        }).format(new Date(dateString))
-    }
-    const post = allBlogs.find((p) => p.slug === slug)
+  const post = useMemo(
+    () => allBlogs.find((p) => p.slug === slug) ?? null,
+    [slug]
+  )
 
-    /* ── Call hook every render ── */
-    const PostComponent = useMDXComponent(
-        post ? post.body.code : PLACEHOLDER_MDX
-    )
+  function formatDate(dateString) {
+    return new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit', month: 'long', year: 'numeric',
+    }).format(new Date(dateString))
+  }
 
-    /* ── Blog index ── */
-    if (!post) {
-        return (
-            <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
-                <h1 className="text-2xl font-bold">Blog</h1>
-                <Text txt="I’ll be posting about AI evaluation, high-stakes LLM applications, and what goes wrong when models meet the real world." />
-                <br></br>
-                <ul>
-                    {allBlogs.map((p) => (
-                        <li key={p._id} className="my-2">
-                            <button
-                                type="button"
-                                onClick={() => setSlug(p.slug)}
-                                className="presentation-button mr-2 mt-2"
-                            >
-                                {p.title}
-                            </button>
-                            <span className="ml-2 text-sm no-hover-inherit">
-                                {formatDate(p.date)}
-                            </span>
-                            <p className="mt-0">{p.summary}</p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        )
-    }
-      
-    /* ── Single post ── */
+  function openPost(nextSlug) {
+    const params = new URLSearchParams(sp)
+    params.set('post', nextSlug)
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+  }
+
+  function backToList() {
+    const params = new URLSearchParams(sp)
+    params.delete('post')
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+  }
+
+  const PostComponent = useMDXComponent(post ? post.body.code : PLACEHOLDER_MDX)
+
+  if (!post) {
     return (
-    <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
-        <button
-        type="button"
-        onClick={() => setSlug(null)}
-        className="text-sm text-gray-500 mb-4"
-        >
-        ← Back to list
-        </button>
-
-        <h1>{post.title}</h1>
-        <p className="text-sm text-gray-500">
-        {formatDate(post.date)}
-        </p>
-
-        {/* 🟢 This is the important part */}
-        <article className="blog-post">
-        <PostComponent />
-        </article>
-    </div>
+      <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
+        <h1 className="text-2xl font-bold">Blog</h1>
+        <Text txt="I’ll be posting about AI evaluation, high-stakes LLM applications, and what goes wrong when models meet the real world." />
+        <br />
+        <ul>
+          {allBlogs.map((p) => (
+            <li key={p._id} className="my-2">
+              <button
+                type="button"
+                onClick={() => openPost(p.slug)}
+                className="presentation-button mr-2 mt-2"
+              >
+                {p.title}
+              </button>
+              <span className="ml-2 text-sm no-hover-inherit">
+                {formatDate(p.date)}
+              </span>
+              <p className="mt-0">{p.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     )
+  }
 
+  return (
+    <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
+      <button
+        type="button"
+        onClick={backToList}
+        className="text-sm text-gray-500 mb-4"
+      >
+        ← Back to list
+      </button>
+
+      <h1>{post.title}</h1>
+      <p className="text-sm text-gray-500">{formatDate(post.date)}</p>
+
+      <article className="blog-post">
+        <PostComponent />
+      </article>
+    </div>
+  )
 }

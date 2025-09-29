@@ -11,11 +11,23 @@ import Misc from "@/components/Misc";
 import { TabContext } from "@/components/NavbarWrapper";
 import PageHeader from "@/components/PageHeader";
 import Research from "@/components/Research";
-import { useContext } from "react";
-export default function Home() {
-  // retrieve activeTab and handleTabChange from our TabContext
-  const { activeTab, handleTabChange } = useContext(TabContext);
+import { useContext, useEffect, useRef } from "react";
 
+export default function Home() {
+  const { activeTab, handleTabChange } = useContext(TabContext);
+  const didInit = useRef(false);
+
+  useEffect(() => {
+    if (didInit.current) return;
+    didInit.current = true;
+
+    // only on first client render: if ?post= exists, go to blog
+    const sp = new URLSearchParams(window.location.search);
+    if (sp.get("post")) {
+      handleTabChange("blog");
+    }
+  }, [handleTabChange]);
+  
   const renderContent = () => {
     switch (activeTab) {
       case "about":
@@ -33,10 +45,7 @@ export default function Home() {
       case "lonelinesspresentation":
         return <LonelinessPresentation />;
       default:
-        return (
-          <FrontPageContent handleTabChange={handleTabChange} />
-
-        );
+        return <FrontPageContent handleTabChange={handleTabChange} />;
     }
   };
 
@@ -46,6 +55,5 @@ export default function Home() {
       {renderContent()}
       <ContactFooter />
     </div>
-
   );
 }
