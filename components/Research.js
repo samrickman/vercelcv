@@ -1,5 +1,5 @@
 import SectionFooterLinks from "./SectionFooterLinks";
-import Text from "./Text"
+import Text from "./Text";
 
 
 
@@ -18,7 +18,7 @@ export default function Research({ handleTabChange }) {
     { href: "https://doi.org/10.1093/geroni/igaf010", label: "Read the paper" },
   ];
   return (
-    <section className="p-6 max-w-4xl mx-auto">
+    <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold">Research</h2>
       <Text txt="
       <em>Health and social care services generate vast amounts of written records. Yet most of this information is unstructured free text.

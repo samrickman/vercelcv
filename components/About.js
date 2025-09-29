@@ -1,11 +1,11 @@
-import Text from "./Text";
 import { TabContext } from "@/components/NavbarWrapper";
 import { useContext } from "react";
+import Text from "./Text";
 
 export default function About() {
   const { activeTab, handleTabChange } = useContext(TabContext);
   return (
-    <section className="p-6 max-w-4xl mx-auto">
+    <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold">About Me</h2>
       <Text txt="
         I’m an AI researcher working on the development and evaluation of large language models (LLMs) in high-stakes, real-world domains. Based at the Care Policy and Evaluation Centre (CPEC) at the London School of Economics, my research focuses on how LLMs perform in applied settings — from summarising complex documents to predicting risk — and how we can ensure their safe, fair, and effective use.

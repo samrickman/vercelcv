@@ -39,7 +39,7 @@ export default function Misc() {
 
 
   return (
-    <section className="p-6 max-w-4xl mx-auto">
+    <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold">Other Projects</h2>
       <Text txt="
         A collection of projects, simulations, and contributions outside my core research.

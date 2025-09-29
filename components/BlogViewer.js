@@ -43,7 +43,7 @@ export default function BlogViewer() {
 
   if (!post) {
     return (
-      <div className="prose dark:prose-invert max-w-3xl mx-auto p-4">
+      <div className="opaque-bg prose dark:prose-invert max-w-3xl mx-auto p-4">
         <h1 className="text-2xl font-bold">Blog</h1>
         <Text txt="I’ll be posting about AI evaluation, high-stakes LLM applications, and what goes wrong when models meet the real world." />
         <br />

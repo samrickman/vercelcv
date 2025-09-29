@@ -59,7 +59,7 @@ export default function CV({ handleTabChange }) {
       <div className={`p-6 text-white rounded-lg ${detailLevel === 0 ? "bg-gray-200/0 dark:bg-gray-900/0" : "bg-gray-200 dark:bg-gray-900"}`}>
         <CvDetailSlider />
       </div>
-      <div className={`relative ${detailLevel === 4 ? "z-10" : "z-1"}`}>{levels[detailLevel]?.content}</div>
+      <div className={`relative opaque-bg ${detailLevel === 4 ? "z-10" : "z-1"}`}>{levels[detailLevel]?.content}</div>
     </section >
   );
 }

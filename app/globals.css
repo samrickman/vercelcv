@@ -221,3 +221,13 @@ a:hover svg {
     z-index: 1;
   }
 }
+
+@layer utilities {
+  .opaque-bg {
+    @apply bg-lightbg dark:bg-darkbg opacity-100;
+    position: relative;
+    z-index: 9 !important;
+  }
+
+
+}
