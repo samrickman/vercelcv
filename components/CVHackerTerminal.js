@@ -3,8 +3,10 @@
 import { Terminal } from "@xterm/xterm";
 import "@xterm/xterm/css/xterm.css";
 import { useEffect, useRef, useState } from "react";
-import updateParticlesConfig from "./UpdateParticlesConfig.js";
+function updateParticlesConfig(newValues) {
 
+    window.dispatchEvent(new CustomEvent("updateParticles", { detail: newValues }));
+}
 
 export default function CVHackerTerminal() {
     const terminalRef = useRef(null);
