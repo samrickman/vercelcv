@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 import { withContentlayer } from 'next-contentlayer';
 
-const nextConfig = {};
+const nextConfig = {
+  experimental: {
+    turbo: false,
+  },
+};
 
-export default withContentlayer(nextConfig)
-
+export default withContentlayer(nextConfig);
