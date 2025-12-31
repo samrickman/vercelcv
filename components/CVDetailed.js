@@ -1,6 +1,6 @@
-import Text from "./Text";
-import Section from "./Section";
 import List from "./List";
+import Section from "./Section";
+import Text from "./Text";
 
 export default function CVDetailed({ handleTabChange }) {
     return (
@@ -130,7 +130,15 @@ export default function CVDetailed({ handleTabChange }) {
             </div>
             <Section title="Employment">
                 <h4 className="text-xl font-semibold mt-2">Researcher in Data Science and the Care System</h4>
-                <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present" />
+
+                <h4 className="text-xl font-semibold mt-2">Principal Data Scientist</h4>
+                <Text txt=" Made Tech | 2025 – Present" />
+                <List
+                    items={[
+                        "Senior technical role working on AI systems for public-sector clients",
+                    ]}
+                />
+                <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2019 – 2025" />
                 <List
                     items={[
                         {

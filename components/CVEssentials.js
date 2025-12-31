@@ -1,6 +1,6 @@
-import Text from "./Text";
-import Section from "./Section";
 import List from "./List";
+import Section from "./Section";
+import Text from "./Text";
 
 export default function CVEssentials() {
     return (
@@ -22,15 +22,25 @@ export default function CVEssentials() {
 
             {/* Employment */}
             <Section title="Employment">
-                <h4 className="text-xl font-semibold mt-2">Researcher in AI & Data Science</h4>
-                <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present" />
+
+                <h4 className="text-xl font-semibold mt-2">Principal Data Scientist</h4>
+                <Text txt=" Made Tech | 2025 – Present" />
                 <List
                     items={[
-                        "Developed AI models to analyse free-text records and improve decision-making",
-                        "Led research on AI bias, influencing ethical use of ML in public services",
-                        "Built scalable data pipelines for forecasting and resource planning",
+                        "Senior technical role working on AI systems for public-sector clients",
                     ]}
                 />
+
+                <h4 className="text-xl font-semibold mt-6">Researcher in AI & Data Science</h4>
+                <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2019 – 2025" />
+                <List
+                    items={[
+                        "Developed AI models to analyse free-text records and support decision-making",
+                        "Led research on bias and evaluation of AI systems in public services",
+                        "Built data pipelines and analytical tools using large administrative datasets",
+                    ]}
+                />
+
             </Section>
 
             {/* Selected Research */}
