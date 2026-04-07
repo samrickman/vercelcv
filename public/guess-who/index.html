@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess Who Generator</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050816'/%3E%3Cpath d='M18 20h28v8H18zm0 16h12v8H18zm16 0h12v8H34z' fill='%237dd3fc'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260407c" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="site-mark" href="https://www.samrickman.com/">Sam Rickman</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="https://www.samrickman.com/">Home</a>
+          <a href="https://www.samrickman.com/#about">About</a>
+          <a href="https://www.samrickman.com/#cv">CV</a>
+          <a href="https://www.samrickman.com/#research">Research</a>
+          <a href="https://www.samrickman.com/#blog">Blog</a>
+          <a href="https://www.samrickman.com/#misc">Misc</a>
+        </nav>
+        <div class="header-spacer" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero">
+        <p class="eyebrow">FREE TOOL / PRINTABLES</p>
+        <h1>Guess Who Generator</h1>
+        <p class="lede">
+          Upload character images, choose the board size, and export a ready-to-print
+          PDF <a href="./assets/example.pdf" target="_blank" rel="noopener">(example)</a>
+          entirely in your browser.
+        </p>
+      </section>
+
+      <section class="workspace">
+        <div class="primary-column">
+          <div class="panel panel-upload">
+            <div class="section-head">
+              <p class="eyebrow">CHARACTERS</p>
+              <h2>Main images</h2>
+            </div>
+
+            <div
+              id="dropzone"
+              class="dropzone"
+              role="button"
+              tabindex="0"
+              aria-label="Upload character images"
+            >
+              <input
+                id="file-input"
+                type="file"
+                accept=".png,.webp,.jpg,.jpeg,.gif,image/png,image/webp,image/jpeg,image/gif"
+                multiple
+                hidden
+              />
+              <p class="dropzone-title">Drop character sprites here</p>
+              <p class="dropzone-copy">
+                Add 24 PNG, WebP, JPG, JPEG, or GIF files for your custom set, or click to browse.
+              </p>
+            </div>
+            <p class="helper-copy upload-help">
+              Names come from the file name by default. For example, <code>undyne.png</code>
+              becomes <code>Undyne</code>. You can edit the displayed name after upload.
+            </p>
+            <p class="helper-copy upload-help">
+
+            </p>
+
+            <div class="upload-meta">
+              <div>
+                <span class="meta-label">Loaded</span>
+                <strong id="file-count">0 files</strong>
+              </div>
+              <div>
+                <span class="meta-label">Outputs</span>
+                <strong>guess-who-printables.pdf</strong>
+              </div>
+            </div>
+
+            <ul id="file-list" class="file-list" aria-live="polite"></ul>
+
+            <div class="list-actions">
+              <div class="control-spacer" aria-hidden="true"></div>
+              <div class="action-button-stack">
+                <span class="action-button-label" aria-hidden="true">Actions</span>
+                <button id="delete-all-button" class="secondary-button secondary-danger" type="button">
+                  Delete All
+                </button>
+              </div>
+            </div>
+
+            <div class="demo-row">
+              <label class="field grow demo-row-field">
+                <span>Demo set</span>
+                <select id="sample-preset">
+                  <option value="deltarune">Deltarune sample set</option>
+                  <option value="undertale">Undertale sample set</option>
+                </select>
+              </label>
+              <button id="load-sample-button" class="secondary-button" type="button">
+                Load Sample Images
+              </button>
+            </div>
+          </div>
+
+          <div class="panel panel-story">
+            <p>
+              I built this after trying to make a version for my daughter&apos;s birthday
+              and finding a sea of paid Etsy templates plus tedious dragging and dropping.
+              The point of this page is to skip all that manual layout work: pick some
+              faces, tweak the names if you want, and get printable sheets for free.
+            </p>
+            <br>
+            <h3>
+              Details
+            </h3>
+            <p class="panel-story">
+              The board-card image area is roughly <code>8:7</code>. Images do not need to
+              match that exactly: transparent or white borders are cropped away first, then
+              the image is scaled to fit, which can leave extra background around narrower
+              or taller characters.
+            </p>
+            <p class="panel-story">
+              This expects 24 images which is standard for Guess Who though it should work with any number.
+            </p>            
+          </div>
+        </div>
+
+        <div class="panel panel-controls">
+          <div class="section-head">
+            <p class="eyebrow">SETTINGS</p>
+            <h2>Generate print sheets</h2>
+          </div>
+
+          <label class="field">
+            <span>Paper size</span>
+            <select id="paper-size">
+              <option value="a4">A4</option>
+              <option value="letter">US Letter</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Board size</span>
+            <select id="size-preset">
+              <option value="modern">2018 / Modern Board</option>
+              <option value="original">Original / Large Board</option>
+              <option value="small">Small Board</option>
+              <option value="drawing">Drawing Deck</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+
+          <div class="size-grid">
+            <label class="field">
+              <span>Width</span>
+              <div class="measure-input">
+                <input id="card-width" type="number" min="0.5" step="0.01" />
+                <span>cm</span>
+              </div>
+            </label>
+            <label class="field">
+              <span>Height</span>
+              <div class="measure-input">
+                <input id="card-height" type="number" min="0.5" step="0.01" />
+                <span>cm</span>
+              </div>
+            </label>
+          </div>
+
+          <div class="section-subhead">
+            <p class="eyebrow">CARD FRONTS</p>
+            <h3>Character background</h3>
+          </div>
+
+          <div class="background-mode" role="radiogroup" aria-label="Front card background type">
+            <label class="mode-pill">
+              <input type="radio" name="front-mode" value="dark" checked />
+              <span>Black</span>
+            </label>
+            <label class="mode-pill">
+              <input type="radio" name="front-mode" value="light" />
+              <span>White</span>
+            </label>
+          </div>
+
+          <div class="section-subhead">
+            <p class="eyebrow">CARD BACKS</p>
+            <h3>Background</h3>
+          </div>
+
+          <div class="background-mode" role="radiogroup" aria-label="Card back background type">
+            <label class="mode-pill">
+              <input type="radio" name="background-mode" value="color" checked />
+              <span>Solid colour</span>
+            </label>
+            <label class="mode-pill">
+              <input type="radio" name="background-mode" value="image" />
+              <span>Upload image</span>
+            </label>
+          </div>
+
+          <div id="background-color-field" class="field">
+            <span>Background colour</span>
+            <div class="color-input">
+              <input id="background-color" type="color" value="#000000" />
+              <code id="background-color-value">#000000</code>
+            </div>
+          </div>
+
+          <div id="background-image-field" class="field hidden">
+            <span>Background image</span>
+            <label class="upload-chip" for="background-image-input">
+              Choose a card-back image
+            </label>
+            <input
+              id="background-image-input"
+              type="file"
+              accept=".png,.webp,.jpg,.jpeg,.gif,image/png,image/webp,image/jpeg,image/gif"
+              hidden
+            />
+            <p id="background-image-name" class="helper-copy">
+              No background image selected.
+            </p>
+          </div>
+
+          <div class="stats" id="stats"></div>
+
+          <button id="generate-button" class="generate-button" type="button">
+            <span class="button-label">Generate PDF</span>
+            <span id="generate-spinner" class="spinner hidden" aria-hidden="true"></span>
+          </button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <p>
+          Personal use only. Please do not use images you do not have permission to use,
+          and please do not sue me. Your images stay in your browser and are not uploaded
+          to my server because there is no server involved in generating the PDF.
+        </p>
+      </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+    <script src="./app.js?v=20260407c"></script>
+  </body>
+</html>
