@@ -8,7 +8,7 @@ export default function About() {
     <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold">About Me</h2>
       <Text txt="
-        I work on the design, delivery and evaluation of AI systems used in public services, with a focus on how they perform in practice when the stakes are high. I am a Principal Data Scientist at <a href='https://www.madetech.com/' target='_blank'>Made Tech</a>, where I work with teams building and deploying AI in operational services, not just demos or research prototypes.
+        I work on the design, delivery and evaluation of AI systems used in public services, with a focus on how they perform in practice when the stakes are high. I am a Principal Data Scientist at <a href='https://www.madetech.com/' target='_blank'>Made Tech</a>, where I work with teams building and deploying AI.
       "/>
       <Text txt="
         My work covers a range of AI systems, including large language models and agent-based approaches used for automation, summarisation and decision support. I focus on how these systems behave in practice, where data is messy, objectives can be contested and mistakes have real consequences. I design evaluations that surface risks, limitations and trade-offs early.

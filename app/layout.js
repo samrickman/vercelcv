@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Sam Rickman",
-  description: "Principal Data Scientist | AI in Public Services | Delivery & Evaluation",
+  description: "Principal Data Scientist | Agentic AI | Deployment & Evaluation",
   alternates: {
     canonical: "https://www.samrickman.com/",
   },

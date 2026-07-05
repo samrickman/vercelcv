@@ -9,7 +9,7 @@ export default function PageHeader() {
       </div>
       <div>
       <h1 className="text-4xl font-bold">Sam Rickman PhD</h1>
-      <p className="text-lg">Principal Data Scientist | AI in Public Services | Delivery & Evaluation</p>
+      <p className="text-lg">Principal Data Scientist | Agentic AI | Deployment & Evaluation</p>
       </div>
     </header>
   )
