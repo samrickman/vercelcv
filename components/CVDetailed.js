@@ -9,14 +9,17 @@ export default function CVDetailed({ handleTabChange }) {
             {/* Technical Skills */}
             <div className="mt-6">
                 <Section title="Technical Skills">
-                    <h4 className="text-lg font-semibold mt-4">Python</h4>
-                    <Text txt="Experienced in Python for data science, NLP and machine learning. Skilled in:" />
+                    <h4 className="text-lg font-semibold mt-4">Generative AI, Agentic Systems & NLP</h4>
+                    <Text txt="Experienced in designing, building and evaluating LLM-based systems for public services. Skilled in:" />
                     <List
                         items={[
                             {
-                                text: "Machine Learning & NLP: PyTorch, TensorFlow, Scikit-learn",
+                                text: "Generative AI, Agentic Systems & NLP: AWS Bedrock, PyTorch, TensorFlow, Scikit-learn, Google ADK, LiteLLM",
                                 subitems: [
-                                    "Experienced with neural network architectures for different tasks: CNNs for image classification, SNNs for text classification, and transformers for text generation. Adapt models based on task complexity, interpretability needs, and dataset constraints.",
+                                    "Designed and evaluated LLM-based agents for high-stakes public services, developing test datasets, experimental frameworks and statistical analyses to compare agent architectures, prompting strategies and structured decision logic.",
+                                    "Built and tested agentic workflows using AWS Bedrock and modern agent frameworks, integrating multiple foundation models, tools and application services.",
+                                    "Evaluated the reliability and determinism of agentic workflows across repeated model runs, identifying sources of behavioural variance and testing approaches to make AI-assisted decision processes more predictable and auditable.",
+                                    "Applied mixed-effects statistical modelling to evaluate LLM performance across heterogeneous user cases, separating differences between system designs from variation in case difficulty.",
                                     "Developed a practical framework for evaluating bias in generative and discriminative LLMs used with an administrative dataset of 115 million words, applying quantitative metrics to assess linguistic patterns and disparities in AI-generated outputs.",
                                     "Evaluated bias in state-of-the-art LLMs (Llama 3, Gemma, DeepSeek, BART, T5) to assess fairness and robustness, finding a statistically significant association between gender and the use of disability-related terms in the Gemma model.",
                                     "Fine-tuned and optimised transformer models for domain-specific tasks, including training RoBERTa to identify loneliness in social care case notes, achieving an accuracy of 0.97 and F1 of 0.92.",
@@ -101,7 +104,7 @@ export default function CVDetailed({ handleTabChange }) {
                             },
                             {
                                 text: "Backend & APIs: Node.js, Flask, FastAPI",
-                                subitems: ["Built endpoints for machine learning models I have trained."],
+                                subitems: ["Built endpoints for machine learning models and AI-assisted workflows, including services that connect models, tools and application logic."],
                             },
                             {
                                 text: "Systems & Scripting: Docker, Bash, PowerShell, SQL, VBA",
@@ -118,10 +121,10 @@ export default function CVDetailed({ handleTabChange }) {
                                 ],
                             },
                             {
-                                text: "Cloud Computing: AWS (EC2, Lambda), DigitalOcean, Vercel",
+                                text: "Cloud Computing: AWS (Bedrock, EC2, Lambda), DigitalOcean, Vercel",
                                 subitems: [
-                                    "Used AWS EC2 for LLM training and inference with GPUs.",
-                                    "Lambda for serverless API requests, Vercel for hosting this site.",
+                                    "Used AWS Bedrock for production-oriented generative AI and agentic workflow development.",
+                                    "Used AWS EC2 for LLM training and inference with GPUs, Lambda for serverless API requests, and Vercel for hosting this site.",
                                 ],
                             },
                         ]}
@@ -133,7 +136,23 @@ export default function CVDetailed({ handleTabChange }) {
                 <Text txt=" Made Tech | 2025 – Present" />
                 <List
                     items={[
-                        "Senior technical role working on AI systems for public-sector clients.",
+                        {
+                            text: "Designed, evaluated and architected production-oriented agentic AI systems for public-sector clients.",
+                            subitems: [
+                                "Designed and led evaluations of LLM-based agents for high-stakes public services, developing test datasets, experimental frameworks and statistical analyses to compare agent architectures, prompting strategies and structured decision logic.",
+                                "Built and tested agentic workflows using AWS Bedrock and modern agent frameworks, integrating multiple foundation models, tools and application services.",
+                                "Developed technical approaches for retrieval, routing and multi-turn decision-making in citizen-facing AI systems, balancing model capability with transparency, evaluation, data protection and operational risk.",
+                                "Worked across architecture, evaluation and delivery, translating policy and operational requirements into practical AI system designs.",
+                            ],
+                        },
+                        {
+                            text: "Evaluated reliability, determinism and comparative performance in LLM-based workflows.",
+                            subitems: [
+                                "Evaluated the reliability and determinism of agentic workflows across repeated model runs, identifying sources of behavioural variance and testing approaches to make AI-assisted decision processes more predictable and auditable.",
+                                "Applied mixed-effects statistical modelling to evaluate LLM performance across heterogeneous user cases, separating differences between system designs from variation in case difficulty and producing robust estimates of comparative accuracy.",
+                                "Designed evaluation approaches for systems where outputs depend on a combination of model behaviour, retrieval quality, tool use and structured business logic.",
+                            ],
+                        },
                     ]}
                 />
                 <h4 className="text-xl font-semibold mt-2">Researcher in Data Science and the Care System</h4>

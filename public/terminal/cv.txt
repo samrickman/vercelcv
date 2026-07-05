@@ -1,17 +1,24 @@
 Technical Skills
-Expert in data science, NLP, and machine learning. Skilled in:
+Experienced in generative AI, agentic systems, NLP and machine learning. Skilled in:
 
-Python, R, JavaScript, and cloud platforms
-LLMs, NLP & machine learning in public services
-Data processing, modeling, and visualisation
-Automation, APIs, and scalable cloud solutions
-Full-stack development for research tools and dashboards
+LLM agents and production-oriented AI systems in public services
+AWS Bedrock, Python, R, JavaScript and cloud platforms
+Evaluation frameworks, reliability testing and statistical modelling
+Retrieval, routing, APIs and multi-turn decision logic
+Data processing, modelling and visualisation
 Employment
+Principal Data Scientist
+Made Tech | 2025 - Present
+
+Designing and evaluating LLM-based agents for public-sector clients
+Building AWS Bedrock workflows with tools, retrieval and structured logic
+Testing reliability, determinism and operational risk in high-stakes AI systems
+
 Researcher in AI & Data Science
-Care Policy and Evaluation Centre (CPEC), LSE | 2020 – Present
+Care Policy and Evaluation Centre (CPEC), LSE | 2019 - 2025
 
 Developed AI models to analyse free-text records and improve decision-making
-Led research on AI bias, influencing ethical use of ML in public services
+Led research on AI bias and evaluation in health and social care
 Built scalable data pipelines for forecasting and resource planning
 Selected Research
 Evaluating gender bias in LLMs in long-term care

@@ -8,14 +8,14 @@ export default function CVEssentials() {
 
             {/* Technical Skills */}
             <Section title="Technical Skills">
-                <Text txt="Experienced in data science, NLP and machine learning. Skilled in:" />
+                <Text txt="Experienced in generative AI, agentic systems, NLP and machine learning. Skilled in:" />
                 <List
                     items={[
-                        "Python, R, JavaScript, and cloud platforms",
-                        "LLMs, NLP & machine learning in public services",
-                        "Data processing, modelling, and visualisation",
-                        "Automation, APIs, and scalable cloud solutions",
-                        "Full-stack development for research tools and dashboards",
+                        "LLM agents and production-oriented AI systems in public services",
+                        "AWS Bedrock, Python, R, JavaScript and cloud platforms",
+                        "Evaluation frameworks, reliability testing and statistical modelling",
+                        "Retrieval, routing, APIs and multi-turn decision logic",
+                        "Data processing, modelling and visualisation",
                     ]}
                 />
             </Section>
@@ -27,7 +27,9 @@ export default function CVEssentials() {
                 <Text txt=" Made Tech | 2025 – Present" />
                 <List
                     items={[
-                        "Senior technical role working on AI systems for public-sector clients",
+                        "Designing, evaluating and architecting production-oriented LLM agents for public-sector clients",
+                        "Building AWS Bedrock-based workflows with tools, retrieval and structured decision logic",
+                        "Testing reliability, determinism and operational risk in high-stakes AI systems",
                     ]}
                 />
 
@@ -36,7 +38,7 @@ export default function CVEssentials() {
                 <List
                     items={[
                         "Developed AI models to analyse free-text records and support decision making",
-                        "Led research on bias and evaluation of AI systems in public services",
+                        "Led research on bias and evaluation of AI systems in health and social care",
                         "Built data pipelines and analytical tools using large administrative datasets",
                     ]}
                 />

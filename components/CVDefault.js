@@ -12,14 +12,14 @@ export default function CVDefault() {
       {/* Technical Skills */}
       <div className="mt-6">
         <Section title="Technical Skills">
-          <h4 className="text-lg font-semibold mt-4">Python</h4>
-          <Text txt="Experienced in Python for data science, NLP and machine learning. Skilled in:" />
+          <h4 className="text-lg font-semibold mt-4">Generative AI, Agentic Systems & NLP</h4>
+          <Text txt="Experienced in building and evaluating LLM-based systems for public services. Skilled in:" />
           <List
             items={[
-              "Machine Learning & NLP: PyTorch, TensorFlow, Scikit-learn",
-              "NLP: Hugging Face Transformers, Spacy, LangChain",
-              "Data Processing: Pandas, NumPy, Cython",
-              "Automation & Scripting: FastAPI, asyncio, multiprocessing",
+              "Agentic systems: AWS Bedrock, Google ADK, LiteLLM, tool use and structured decision logic",
+              "Machine learning & NLP: PyTorch, TensorFlow, Scikit-learn, Hugging Face Transformers, spaCy",
+              "Evaluation: test datasets, repeated-run experiments, mixed-effects modelling, bias and reliability analysis",
+              "Data processing and automation: Pandas, NumPy, Cython, FastAPI, asyncio, multiprocessing",
             ]}
           />
 
@@ -45,7 +45,7 @@ export default function CVDefault() {
               "Backend & APIs: Node.js, FastAPI",
               "Systems & Scripting: Docker, Bash, PowerShell, SQL, VBA",
               "Automated reports: Quarto, rmarkdown, LaTeX, Pandoc",
-              "Cloud Computing: AWS (EC2, Lambda), DigitalOcean, Vercel",
+              "Cloud Computing: AWS (Bedrock, EC2, Lambda), DigitalOcean, Vercel",
             ]}
           />
         </Section>
@@ -57,7 +57,10 @@ export default function CVDefault() {
         <Text txt=" Made Tech | 2025 – Present" />
         <List
             items={[
-                "Senior technical role working on AI systems for public-sector clients.",
+                "Designed and led evaluations of LLM-based agents for high-stakes public services, developing test datasets, experimental frameworks and statistical analyses to compare agent architectures, prompting strategies and structured decision logic.",
+                "Built and tested agentic workflows using AWS Bedrock and modern agent frameworks, integrating multiple foundation models, tools and application services.",
+                "Evaluated the reliability and determinism of agentic workflows across repeated model runs, identifying sources of behavioural variance and testing approaches to make AI-assisted decision processes more predictable and auditable.",
+                "Developed technical approaches for retrieval, routing and multi-turn decision-making in citizen-facing AI systems, balancing model capability with transparency, evaluation, data protection and operational risk.",
             ]}
         />
         <h4 className="text-xl font-semibold mt-2">Researcher in Data Science and the Care System</h4>
