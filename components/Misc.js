@@ -42,7 +42,7 @@ export default function Misc() {
     <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-semibold">Other Projects</h2>
       <Text txt="
-        A collection of projects, simulations, and contributions outside my core research.
+        Projects, simulations and contributions outside my core research.
       "/>
 
 
@@ -52,12 +52,12 @@ export default function Misc() {
           Analysing Accuracy, Balancing Bias – Can ChatGPT Be Trusted to Ease the Care Documentation Burden?
         </h3>
         <Text txt="
-        As lead for the <a href='https://goltc.org/interest-group/data-science/' target='_blank'>Global Observatory of Long-Term Care Data Science Interest Group</a>, I organised and chaired this webinar on the accuracy and bias of 
-          large language models (LLMs) in care documentation. Care managers spend around 6 hours per week transcribing handwritten 
-          notes into electronic records. LLMs are now being used to automate this process, but how reliable are these tools?
+        As lead for the <a href='https://goltc.org/interest-group/data-science/' target='_blank'>Global Observatory of Long-Term Care Data Science Interest Group</a>, I organised and chaired this webinar on the accuracy and bias of
+          large language models (LLMs) in care documentation. Care managers spend around six hours a week transcribing handwritten
+          notes into electronic records. LLMs are now being used to automate parts of this work, raising practical questions about reliability and bias.
         " />
         <Text txt="
-          The discussion covered key concerns, including racial disparities in speech recognition, hallucinated content in 
+          The discussion covered concerns including racial disparities in speech recognition, hallucinated content in
           automated summaries, and methods for evaluating LLM-generated case notes.
         " />
 
@@ -76,8 +76,8 @@ export default function Misc() {
       <div className="mt-6">
         <h3 className="text-xl font-semibold">Imbalanced Classifier Comparison</h3>
         <Text txt="
-          Python simulations comparing the accuracy and F1 score of various binary classification algorithms 
-          under imbalanced data conditions with varying levels of noise. Covers logistic regression, random forest, 
+          Python simulations comparing the accuracy and F1 score of binary classification algorithms
+          under imbalanced data conditions with varying levels of noise. Covers logistic regression, random forest,
           bagging, gradient boosting, Gaussian process, and sequential neural networks.
         "/>
         <SectionFooterLinks links={imbalancedClassifierLinks} />
@@ -87,9 +87,9 @@ export default function Misc() {
       <div className="mt-6">
         <h3 className="text-xl font-semibold">Plotting Poetry: Beyond a Grammar of Graphics</h3>
         <Text txt="
-          Hadley Wickham’s <code>ggplot2</code> is built on Leland Wilkinson’s <em>grammar of graphics</em>, 
-          but Wickham noted that while grammar tells us what makes a valid sentence, it doesn’t tell us how to write well. 
-          <em className='ml-2'>Plotting Poetry</em> extends this idea to explore how to effectively communicate data visually.
+          Hadley Wickham’s <code>ggplot2</code> is built on Leland Wilkinson’s <em>grammar of graphics</em>.
+          Wickham noted that grammar tells us what makes a valid sentence, but not how to write well.
+          <em className='ml-2'>Plotting Poetry</em> applies that idea to visual communication with data.
         "/>
         <SectionFooterLinks links={plottingPoetryLinks} />
 
@@ -101,13 +101,12 @@ export default function Misc() {
           Communicating Long-Term Care Research: Interactive Maps and Cartograms with R & JavaScript
         </h3>
         <Text txt="
-          Interactive maps are a powerful way to highlight geographic variation in long-term care research. 
-          However, every visualisation involves design choices that shape how the data is perceived. 
+          Interactive maps can highlight geographic variation in long-term care research, but every visualisation involves design choices that shape how the data is read.
         "/>
         <Text txt="
-          This blog post explores practical ways to create maps and cartograms in R and JavaScript (d3.js), 
-          discussing the trade-offs between different visualisation techniques. The post includes reproducible code and 
-          examples comparing visualisation methods — such as the different ways US election results can be mapped.
+          This blog post explores practical ways to create maps and cartograms in R and JavaScript (d3.js),
+          discussing trade-offs between different visualisation techniques. It includes reproducible code and
+          examples comparing methods, including different ways to map US election results.
         "/>
 
         <SectionFooterLinks links={mapsCartogramsLinks} />
@@ -119,8 +118,8 @@ export default function Misc() {
       <div className="mt-6">
         <h3 className="text-xl font-semibold">Simulations with Cohen’s Kappa and Krippendorff’s Alpha</h3>
         <Text txt="
-          R simulations comparing confidence intervals for Cohen’s 𝜅 and Krippendorff’s 𝛼 in imbalanced data scenarios. 
-          The results demonstrate that while both metrics behave similarly with balanced data, Krippendorff’s 𝛼 shows greater 
+          R simulations comparing confidence intervals for Cohen’s 𝜅 and Krippendorff’s 𝛼 in imbalanced data scenarios.
+          The results show that while both metrics behave similarly with balanced data, Krippendorff’s 𝛼 shows greater
           uncertainty when data is highly imbalanced.
         "/>
         <SectionFooterLinks links={krippAlphaLinks} />
@@ -132,8 +131,8 @@ export default function Misc() {
       <div className="mt-6">
         <h3 className="text-xl font-semibold">Aethelred’s Adventure</h3>
         <Text txt="
-          A tiny text-based RPG I made with my 6-year-old daughter. The story and many of the design choices — including 
-          a flaming blue horse representing the King’s tax collectors — were hers. Written in Python.
+          A tiny text-based RPG I made with my 6-year-old daughter. The story and many of the design choices, including
+          a flaming blue horse representing the King’s tax collectors, were hers. Written in Python.
         "/>
         <SectionFooterLinks links={aethelredLinks} />
 
@@ -146,14 +145,13 @@ export default function Misc() {
           Optimisation of Tail Recursion in R
         </h3>
         <Text txt="
-        A deep dive into <span className='font-semibold'>Tail Call Optimisation (TCO)</span>, introduced in R 4.4.0, 
+        A close look at <span className='font-semibold'>Tail Call Optimisation (TCO)</span>, introduced in R 4.4.0,
         exploring how it works and how it differs from TCO implemented in C by gcc.
       "/>
         <Text txt="
-        Unlike some other implementations, R’s TCO does not reuse the same stack frame or rewrite recursion as a loop. 
-        Instead, R's TCO prevents the stack depth from increasing on each call, avoiding stack overflow errors in 
-        deeply recursive functions. However, the added overhead means R's Tailcall() does not necessarily improve performance. In fact, 
-        it can be slower than standard recursion.
+        Unlike some other implementations, R’s TCO does not reuse the same stack frame or rewrite recursion as a loop.
+        Instead, it prevents the stack depth from increasing on each call, avoiding stack overflow errors in deeply recursive functions.
+        The added overhead means R's Tailcall() does not necessarily improve performance, and can be slower than standard recursion.
       "/>
 
         <SectionFooterLinks links={tcoLinks} />
@@ -165,7 +163,7 @@ export default function Misc() {
           </a>
         </div>
         <Text txt="
-        I actively participate in the Stack Overflow community, answering questions on data science, R, Python, and programming concepts.
+        I answer Stack Overflow questions on data science, R, Python and programming concepts.
       " className="mt-2 " />
       </div>
 
@@ -173,7 +171,7 @@ export default function Misc() {
       <div className="mt-6">
         <h3 className="text-xl font-semibold">Open Source Contributions</h3>
         <Text txt="
-          I’ve contributed to various open-source projects that I use, including:
+          I’ve contributed to open-source projects I use, including:
         "/>
         <ul className="list-disc list-inside mt-2 ">
           <li>

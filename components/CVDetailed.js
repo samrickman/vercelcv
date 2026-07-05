@@ -10,7 +10,7 @@ export default function CVDetailed({ handleTabChange }) {
             <div className="mt-6">
                 <Section title="Technical Skills">
                     <h4 className="text-lg font-semibold mt-4">Python</h4>
-                    <Text txt="Experienced in Python for data science, NLP, and machine learning. Skilled in:" />
+                    <Text txt="Experienced in Python for data science, NLP and machine learning. Skilled in:" />
                     <List
                         items={[
                             {
@@ -19,7 +19,7 @@ export default function CVDetailed({ handleTabChange }) {
                                     "Experienced with neural network architectures for different tasks: CNNs for image classification, SNNs for text classification, and transformers for text generation. Adapt models based on task complexity, interpretability needs, and dataset constraints.",
                                     "Developed a practical framework for evaluating bias in generative and discriminative LLMs used with an administrative dataset of 115 million words, applying quantitative metrics to assess linguistic patterns and disparities in AI-generated outputs.",
                                     "Evaluated bias in state-of-the-art LLMs (Llama 3, Gemma, DeepSeek, BART, T5) to assess fairness and robustness, finding a statistically significant association between gender and the use of disability-related terms in the Gemma model.",
-                                    "Fine-tuned and optimised transformer models for domain-specific tasks, including training RoBERTa to identify loneliness in social care case notes, achieving an accuray of 0.97 and F1 of 0.92",
+                                    "Fine-tuned and optimised transformer models for domain-specific tasks, including training RoBERTa to identify loneliness in social care case notes, achieving an accuracy of 0.97 and F1 of 0.92.",
                                     "Used LLMs to generate high-fidelity synthetic datasets, enabling reproducibility and benchmarking for models trained on sensitive data that cannot be publicly shared, ensuring rigorous evaluation while preserving data confidentiality.",
                                 ],
                             },
@@ -41,7 +41,7 @@ export default function CVDetailed({ handleTabChange }) {
 
 
                     <h4 className="text-lg font-semibold mt-4">R</h4>
-                    <Text txt="Strong background in R for statistical computing, data visualisation, and performance optimisation." />
+                    <Text txt="Strong background in R for statistical computing, data visualisation and performance optimisation." />
                     <List
                         items={[
                             {
@@ -63,7 +63,7 @@ export default function CVDetailed({ handleTabChange }) {
                                 text: "Geospatial Analysis: sf, terra, osrm, leaflet, tmap",
                                 subitems: [
                                     "Working with spatial data for research and policy analysis, mapping trends in health and social care.",
-                                    "Useing geospatial tools, including cartogram for Dorling cartograms, hexjsonwidget for interactive hex maps, and echarts4r for custom visualisations.",
+                                    "Using geospatial tools, including cartogram for Dorling cartograms, hexjsonwidget for interactive hex maps, and echarts4r for custom visualisations.",
                                 ],
                             },
                             {
@@ -129,15 +129,14 @@ export default function CVDetailed({ handleTabChange }) {
                 </Section>
             </div>
             <Section title="Employment">
-                <h4 className="text-xl font-semibold mt-2">Researcher in Data Science and the Care System</h4>
-
                 <h4 className="text-xl font-semibold mt-2">Principal Data Scientist</h4>
                 <Text txt=" Made Tech | 2025 – Present" />
                 <List
                     items={[
-                        "Senior technical role working on AI systems for public-sector clients",
+                        "Senior technical role working on AI systems for public-sector clients.",
                     ]}
                 />
+                <h4 className="text-xl font-semibold mt-2">Researcher in Data Science and the Care System</h4>
                 <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2019 – 2025" />
                 <List
                     items={[

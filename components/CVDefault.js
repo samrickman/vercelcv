@@ -13,10 +13,10 @@ export default function CVDefault() {
       <div className="mt-6">
         <Section title="Technical Skills">
           <h4 className="text-lg font-semibold mt-4">Python</h4>
-          <Text txt="Experienced in Python for data science, NLP, and machine learning. Skilled in:" />
+          <Text txt="Experienced in Python for data science, NLP and machine learning. Skilled in:" />
           <List
             items={[
-              "Machine Learning NLP: PyTorch, TensorFlow, Scikit-learn",
+              "Machine Learning & NLP: PyTorch, TensorFlow, Scikit-learn",
               "NLP: Hugging Face Transformers, Spacy, LangChain",
               "Data Processing: Pandas, NumPy, Cython",
               "Automation & Scripting: FastAPI, asyncio, multiprocessing",
@@ -24,7 +24,7 @@ export default function CVDefault() {
           />
 
           <h4 className="text-lg font-semibold mt-4">R</h4>
-          <Text txt="Strong background in R for statistical computing, data visualisation, and performance optimisation:" />
+          <Text txt="Strong background in R for statistical computing, data visualisation and performance optimisation:" />
           <List
             items={[
               "Data Manipulation: data.table, tidyverse",
@@ -57,14 +57,14 @@ export default function CVDefault() {
         <Text txt=" Made Tech | 2025 – Present" />
         <List
             items={[
-                "Senior technical role working on AI systems for public-sector clients",
+                "Senior technical role working on AI systems for public-sector clients.",
             ]}
         />
         <h4 className="text-xl font-semibold mt-2">Researcher in Data Science and the Care System</h4>
         <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2019 – 2025" />
         <List
           items={[
-            "Designed and led a study evaluating gender bias in Large Language Models (LLMs) used in social care, developing and using methods to quantify bias.",
+            "Designed and led a study evaluating gender bias in Large Language Models (LLMs) used in social care, developing methods to quantify bias.",
             "Created a pipeline to extract structured data from free-text social care records, enabling data-driven service planning.",
             {
               text: "Led multi-disciplinary data science projects on AI in public services, securing research funding and applying machine learning to forecast population need and care system capacity:",

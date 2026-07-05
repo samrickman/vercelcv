@@ -8,12 +8,12 @@ export default function CVEssentials() {
 
             {/* Technical Skills */}
             <Section title="Technical Skills">
-                <Text txt="Expert in data science, NLP, and machine learning. Skilled in:" />
+                <Text txt="Experienced in data science, NLP and machine learning. Skilled in:" />
                 <List
                     items={[
                         "Python, R, JavaScript, and cloud platforms",
                         "LLMs, NLP & machine learning in public services",
-                        "Data processing, modeling, and visualisation",
+                        "Data processing, modelling, and visualisation",
                         "Automation, APIs, and scalable cloud solutions",
                         "Full-stack development for research tools and dashboards",
                     ]}
@@ -35,7 +35,7 @@ export default function CVEssentials() {
                 <Text txt="Care Policy and Evaluation Centre (CPEC), LSE | 2019 – 2025" />
                 <List
                     items={[
-                        "Developed AI models to analyse free-text records and support decision-making",
+                        "Developed AI models to analyse free-text records and support decision making",
                         "Led research on bias and evaluation of AI systems in public services",
                         "Built data pipelines and analytical tools using large administrative datasets",
                     ]}

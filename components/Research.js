@@ -21,10 +21,9 @@ export default function Research({ handleTabChange }) {
     <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold">Research</h2>
       <Text txt="
-      <em>Health and social care services generate vast amounts of written records. Yet most of this information is unstructured free text.
-        This creates two major challenges: vital information is difficult to extract, and frontline staff face an
-        overwhelming documentation burden. My research explores AI to address both problems,
-        using LLMs to extract meaningful data from free text, and developing methods to evaluate bias in LLMs used to reduce administrative workload.</em>"
+      <em>Health and social care services produce large amounts of written records, but much of this information is unstructured free text.
+        That creates two problems: important information is hard to extract, and frontline staff face a heavy documentation burden.
+        My research looks at how AI can help with both, using LLMs to extract meaningful data from free text and developing methods to evaluate bias when these systems are used to reduce administrative work.</em>"
       />
       {/* Paper 1: Evaluating Gender Bias in LLMs */}
       <div className="mt-6">
@@ -32,9 +31,9 @@ export default function Research({ handleTabChange }) {
           Evaluating Gender Bias in Large Language Models in Long-Term Care
         </h3>
         <Text txt="
-          This study evaluates gender bias in LLM-generated summaries of long-term care records using Meta’s Llama 3 and Google’s Gemma.  
-          Findings reveal significant gender-based differences in summaries, with women's health needs downplayed in certain models.  
-          The paper proposes a framework for <span className='font-semibold'>quantitative evaluation of bias in generative LLMs</span>."
+          This study evaluates gender bias in LLM-generated summaries of long-term care records, using Meta’s Llama 3 and Google’s Gemma.
+          It finds significant gender-based differences in the summaries, with some models downplaying women's health needs.
+          The paper proposes a framework for the <span className='font-semibold'>quantitative evaluation of bias in generative LLMs</span>."
         />
         <div className="mt-2">
 
@@ -59,9 +58,9 @@ export default function Research({ handleTabChange }) {
           Understanding Patterns of Loneliness in Older Long-Term Care Users Using NLP
         </h3>
         <Text txt="
-          This research applies NLP to over 1.1 million free-text case notes to identify loneliness in older adults.  
-          Using a <span className='font-semibold'>transformer-based model with an F1 score of 0.92</span>, it validates loneliness indicators against external datasets,  
-          demonstrating the feasibility of extracting social determinants of health from administrative records."
+          This research uses NLP to identify loneliness in more than 1.1 million free-text case notes for older adults.
+          A <span className='font-semibold'>transformer-based model with an F1 score of 0.92</span> is validated against external datasets,
+          showing that social determinants of health can be extracted from administrative records."
         />
         <div className="mt-2">
           <div className="flex flex-wrap gap-4 items-center mt-2">
@@ -83,9 +82,9 @@ export default function Research({ handleTabChange }) {
           Loneliness as a Risk Factor for Time to Care Home Entry
         </h3>
         <Text txt="
-          This study examines how loneliness affects the time until care home entry for older adults receiving community care.  
-          Using <span className='font-semibold'>competing risk survival models</span> it finds that loneliness increases the likelihood of entering a care home  
-          and may accelerate the process by an average of 9 months for high-risk individuals.
+          This study examines how loneliness affects the time to care home entry for older adults receiving community care.
+          Using <span className='font-semibold'>competing risk survival models</span>, it finds that loneliness increases the likelihood of entering a care home
+          and may bring entry forward by an average of nine months for high-risk individuals.
           "
         />
         <div className="flex flex-wrap gap-4 items-center mt-2">
