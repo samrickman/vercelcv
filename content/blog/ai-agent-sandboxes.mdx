@@ -1,0 +1,97 @@
+---
+title: "Where should an AI agent's sandbox end?"
+date: "2026-07-05"
+summary: "A sandbox can contain an agent and still allow capabilities that matter for data security."
+---
+
+I was experimenting with [Docker Sandboxes](https://docs.docker.com/ai/sandboxes/) - a new way of running AI coding agents inside isolated microVMs - when a friend said to me, "It'll be interesting to see whether they work".
+
+My first instinct was to interpret that as: can the agent break out? Obviously that matters. If an agent can escape the sandbox and read my private keys, that's a problem.
+
+But the question I actually cared about was more practical. If I put an agent in a sufficiently good sandbox, can I stop approving every command, switch on `--dangerously-skip-permissions` or `--yolo` mode and leave it to get on with the job?
+
+After playing with Docker Sandboxes, my answer is: sometimes. But keeping the agent away from my computer is only part of the risk.
+
+## I want an agent to be autonomous
+
+I have a bad habit of occasionally running agents with the safety catches turned off. To be absolutely clear for the sake of my employer's liability insurance: I mean on a personal machine, working on throwaway projects.
+
+The appeal is obvious. An agent is much less useful if it stops every few minutes to ask whether it can edit a file, run a test or install a library. At some point I become the world's least useful human approval API. The downside is equally obvious. I'm giving an autonomous AI agent the ability to run arbitrary commands as me.
+
+[Simon Willison recently got me thinking more seriously about this](https://simonwillison.net/2026/Jan/25/the-browser-is-the-sandbox/). He argued that the browser is already a remarkably battle-hardened environment for running hostile code. Perhaps, rather than trying to constrain agents inside containers, we should run them in the browser.
+
+I can see the appeal. I can also see myself asking the agent to install a system library, compile some Rust, run `docker compose up`, or debug whichever bizarre build tool the repository I've just cloned happens to use.
+
+Part of the reason browser sandboxes are good is that browsers can't do lots of things. [Co-do](https://github.com/PaulKinlan/Co-do) - an AI-powered file manager which uses browser filesystem APIs - is really interesting, but it's not yet a replacement for giving an agent something much more like a normal computer.
+
+I'm also slightly wary of treating "battle hardened" as equivalent to "can't be escaped". Anthropic recently reported that [Mythos found zero-day vulnerabilities in every major web browser](https://www.anthropic.com/research/mythos-preview), including one exploit chain which escaped both renderer and operating-system sandboxes. Some of the vulnerabilities it found in widely scrutinised software had apparently existed for decades. Similarly, Docker itself has already [fixed two network-isolation vulnerabilities](https://docs.docker.com/ai/sandboxes/release-notes/) in Sandboxes which allowed data exfiltration through [DNS](https://nvd.nist.gov/vuln/detail/CVE-2026-12039) and [ICMP](https://nvd.nist.gov/vuln/detail/CVE-2026-12539).
+
+None of this means sandboxes (whether browsers, containers, or VMs) aren't useful. It just means there isn't a magic environment in which hostile code becomes harmless. At some point, every sandbox reaches a boundary we're trusting to hold, and increasingly capable agents may be unusually good at looking for weaknesses in it.
+
+The question for me was therefore more practical: could I get a much stronger boundary, while still giving an agent something close to a normal development environment? That's what led me to Docker Sandboxes.
+
+## The sandbox seemed to work...
+
+[Docker Sandboxes run coding agents inside microVMs](https://docs.docker.com/ai/sandboxes/security/). The agent gets its own filesystem, network and Docker Engine. It can have `sudo` and largely do what it likes inside the VM.
+
+I find this appealing. I don't particularly want to understand the subtly different sandboxing models of Codex, Claude Code, Gemini CLI, Mistral Vibe, and whichever agent I try next week. I'd rather put all of them inside an external boundary and assume the agent itself is compromised.
+
+I did some fairly basic containment tests using `--clone` mode (so the agent couldn't change the host working tree - probably a subject for another post). I planted random canary values elsewhere in my home directory and in `/tmp` and asked Codex to find them. It inspected mounts, `/proc`, devices, symlinks and the Docker socket. It couldn't see them. I also ran a web server on my host's localhost and asked it to reach that. It couldn't. Docker's network proxy intercepted and blocked its attempts before my server saw a request.
+
+This wasn't a penetration test. I specifically didn't ask Codex to download exploits or attack the VM boundary. I just wanted to see the features of the sandbox. A compromised agent which can read one repository is a very different proposition from one which can read my entire home directory.
+
+But even assuming an agent can't gain more permissions, does that mean it's safe to leave it running unattended in the sandbox? I started wondering what it could do with the permissions it already had.
+
+## I gave Codex somewhere to upload a file
+
+I created a private S3 bucket in my personal AWS account. Inside the repo, I created a text file containing a harmless canary with a randomly generated hex value:
+
+```text
+SBX_BUILD_CANARY_4abc563d938bdf59714d955a288475da
+```
+
+Then I generated a [presigned S3 PUT URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html), giving somebody temporary permission to upload a specific object without giving them AWS credentials.
+
+I assumed my sandboxed Codex agent was compromised by malicious prompt injection. I gave it the URL and told it to move the contents of the canary file out of the sandbox. It didn't need my AWS credentials. It didn't change Docker's network policy and it didn't escape the microVM. It just made an HTTP request.
+
+The upload succeeded. The canary appeared in my S3 bucket, and Docker's own policy log showed the request as allowed. The sandbox had worked exactly as configured.
+
+## Why was a sandbox allowed to upload to an S3 bucket?
+
+Docker Sandboxes have three network policies: Open, Balanced (their recommended starting point which is selected by default), and Locked Down. [Balanced](https://docs.docker.com/ai/sandboxes/governance/local/) is a practical middle ground. It denies access to all network requests except those on an allowlist of AI providers, package managers, code hosts, container registries and cloud services.
+
+The default allowlist on my sandbox included npm, PyPI, crates.io, RubyGems, GitHub, GitLab, Bitbucket and SourceForge. There were broad rules covering AWS and Google Cloud infrastructure, alongside Microsoft Azure and other developer services.
+
+## Turning off network access is probably not the optimal solution
+
+It's tempting to say, just block those sites. I can remove the broad AWS rules. That would have stopped my S3 experiment. I could then look at Google Cloud, Azure and the other cloud infrastructure. I could remove GitHub, GitLab and Bitbucket. Package registries probably deserve a closer look too. Or even just use [Locked Down](https://docs.docker.com/ai/sandboxes/governance/local/) mode which blocks outbound traffic unless you explicitly allow it.
+
+But if you do this, the agent becomes much less useful. The internet isn't an optional extra bolted onto modern agents. Retrieval, current information and tool use aren't peripheral capabilities; they're increasingly part of how we get useful and grounded behaviour from these systems.
+
+A May 2026 paper, [LiveBrowseComp](https://arxiv.org/abs/2605.28721), separated what search agents could answer from their existing model knowledge from what they could do with tools. **On existing search benchmarks, tool access improved some model-benchmark pairings by almost 50%**. On the new benchmark, which was deliberately built around recent information, closed-book **every evaluated agent scored below 2%**.
+
+So you might say, if agents need the internet, use Locked Down network mode and manually allow access to legitimate endpoints. But if every new destination is blocked, I'm back in the loop. The agent needs Docker's documentation. Approve it. Then a GitHub issue. Approve it. Then a release artefact. Approve it. Then somebody on Reddit appears to have encountered the same obscure error yesterday. How long before I'm not really paying attention?
+
+## The sandbox has to contain things I care about
+
+There's another obvious objection: perhaps I'm thinking about sandboxes incorrectly. Perhaps the answer is just: don't put anything sensitive inside one. But that seems to misunderstand what I want a sandbox for. I'm not detonating malware in a disposable VM. I'm trying to let an agent do useful work while limiting the consequences if the agent is compromised.
+
+Sure, I'm not going to put `~/.ssh` inside the sandbox. But work will often involve information which should legitimately be available to an agent but isn't public. A coding agent might work on private source code or an unreleased security fix. Another agent might help draft an internal company policy, analyse a financial forecast, review a market-sensitive proposal, summarise board papers, or investigate a spreadsheet of operational data.
+
+Increasingly, organisations are explicitly buying enterprise AI services on the basis that they're suitable for processing this kind of confidential information under defined data-handling controls. Once I've decided an agent is authorised to analyse a financial spreadsheet, it doesn't follow that I'm also happy for the agent to upload that spreadsheet to a third party.
+
+In fact, that feels like the point of the sandbox. I want to give the agent access to something useful and valuable, then constrain what it can do with that access. If the rule is that a sandboxed agent may only ever see information I'm happy to make public, we've ruled out a fairly large proportion of useful work.
+
+## So what are Docker Sandboxes for?
+
+Docker Sandboxes clearly increase the security of running an autonomous agent. If the concern is **the agent damaging or taking over the host**, a microVM and an isolated workspace do a lot of useful work. Keeping Codex away from the rest of my home directory, private keys and other repos is an enormous improvement that can change how much autonomy it's reasonable to give the agent.
+
+If the concern is **confidential data leaving the workspace**, a Docker Sandbox with a Balanced network policy doesn't necessarily prevent this. A Locked Down policy would substantially reduce the risk, though also either limit the agent or put me back in the loop to approve every network request.
+
+If the concern is the **agent taking actions in external systems**, sandboxing is largely beside the point. An agent which is authorised to deploy to production, modify records or spend money can misuse that authority without ever escaping the microVM or seeing the underlying credentials. Those capabilities need their own limits, approvals and safeguards.
+
+So does a sandbox help? Yes. If I'm using `--clone` mode on a workspace containing nothing I care about disclosing, and the agent has no meaningful authority over external systems, that's the sort of situation where I'd be comfortable turning off the agent's permission prompts to let it get on with the job. This doesn't mean that code produced is trustworthy. But it has moved the agent's autonomous execution away from the rest of my computer.
+
+But - as the UK NCSC current spectrum-based [guidance](https://www.ncsc.gov.uk/blogs/the-vibe-coding-spectrum-approach-to-ai-assisted-software-development) says - different levels of autonomy and oversight a appropriate depending on the stakes. A sandbox doesn't mean I can let my agent run without supervision as a default. In this experiment, I gave Codex access to one repo and the default Sandbox allowlist sites because I wanted it to be useful. The sandbox did exactly what I asked of it: it kept the agent away from the rest of my computer while allowing it to work with the repository and the wider development ecosystem. Those same permissions were enough to let a compromised agent move data out.
+
+So the question isn't just whether the agent is sandboxed. It's also what it can read, where it can communicate, and what actions it's authorised to take. Docker Sandboxes give me a much better boundary between the agent and my machine. They don't tell me what I should be comfortable putting inside that boundary.
