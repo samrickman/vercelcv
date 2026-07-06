@@ -36,6 +36,10 @@ export default function Misc() {
     { href: "https://stackoverflow.com/questions/78979492/optimization-of-tail-recursion-in-r/78989350#78989350", label: "Read on Stack Overflow" },
   ];
 
+  const valgrindRLinks = [
+    { href: "https://stackoverflow.com/questions/79952588/why-is-as-logical-much-faster-than-logical0", label: "Read on Stack Overflow" },
+  ];
+
 
 
   return (
@@ -155,6 +159,21 @@ export default function Misc() {
       "/>
 
         <SectionFooterLinks links={tcoLinks} />
+
+      </div>
+
+      {/* Debugging R with Valgrind */}
+      <div className="mt-6">
+        <h3 className="text-xl font-semibold">
+          Using Valgrind to Debug R
+        </h3>
+        <Text txt="
+          A Stack Overflow answer showing how to investigate R performance questions with lower-level debugging tools.
+          The specific example compares two ways of creating a logical vector, but the useful part is the method:
+          using Valgrind to trace allocation behaviour.
+        "/>
+
+        <SectionFooterLinks links={valgrindRLinks} />
 
 
         <div className="mt-0 float-right">
