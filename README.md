@@ -60,7 +60,7 @@ The source code for this site is licensed under the MIT License. Website content
 ## To do
 
 - [ ] Integrate **live demo projects** for AI/NLP research.
-- [ ] Add some **blog posts**.
+- [ ] Add occasional **writing**.
 - [ ] Include **interactive research visualisations**.
 - [ ] Improve **dark mode toggle** positioning on medium screens (tablets).
 

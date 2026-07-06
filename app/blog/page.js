@@ -4,8 +4,8 @@ import PageHeader from "@/components/PageHeader";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Blog | Sam Rickman",
-  description: "Occasional writing about AI agents, evaluation and public-service AI systems.",
+  title: "Writing | Sam Rickman",
+  description: "Occasional writing about AI agents, evaluation, deployment and public-service AI systems.",
   alternates: {
     canonical: "https://www.samrickman.com/blog",
   },

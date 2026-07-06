@@ -21,10 +21,15 @@ export default function Research({ handleTabChange }) {
     <section className="opaque-bg p-6 max-w-4xl mx-auto">
       <h2 className="text-3xl font-semibold">Research</h2>
       <Text txt="
-      <em>Health and social care services produce large amounts of written records, but much of this information is unstructured free text.
-        That creates two problems: important information is hard to extract, and frontline staff face a heavy documentation burden.
-        My research looks at how AI can help with both, using LLMs to extract meaningful data from free text and developing methods to evaluate bias when these systems are used to reduce administrative work.</em>"
+      <em>How do we know whether AI systems are reliable, fair and useful when they are used in real public services?
+        Much of my work develops evaluation methods for messy text, complex workflows and high-stakes decisions.
+        That includes using LLMs and NLP to extract meaningful information from records, and testing where models introduce bias, uncertainty or operational risk.</em>"
       />
+      <Text txt="
+      Agentic AI makes this evaluation problem more important rather than less. When systems retrieve information, call tools,
+      make intermediate decisions and respond across multiple turns, accuracy is no longer just a property of a single model output.
+      It depends on architecture, prompts, data, workflow design and the surrounding service.
+      " />
       {/* Paper 1: Evaluating Gender Bias in LLMs */}
       <div className="mt-6">
         <h3 className="text-xl font-semibold">

@@ -8,7 +8,7 @@ export default function Navbar({ activeTab, handleTabChange }) {
     { id: "about", label: "About Me" },
     { id: "cv", label: "CV" },
     { id: "research", label: "Research" },
-    { id: "blog", label: "Blog" },
+    { id: "blog", label: "Writing" },
     { id: "misc", label: "Misc" },
   ];
 

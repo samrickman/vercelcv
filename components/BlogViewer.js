@@ -58,8 +58,8 @@ export default function BlogViewer({ initialSlug = null, useBlogRoutes = false }
   if (!post) {
     return (
       <div className="opaque-bg prose dark:prose-invert max-w-3xl mx-auto p-4">
-        <h1 className="text-2xl font-bold">Blog</h1>
-        <Text txt="I’ll be posting about AI evaluation, high-stakes LLM applications, and what goes wrong when models meet the real world." />
+        <h1 className="text-2xl font-bold">Writing</h1>
+        <Text txt="Occasional notes on AI agents, evaluation, deployment and the practical trade-offs that appear when models are used in real services." />
         <br />
         <ul>
           {posts.map((p) => (
@@ -89,7 +89,7 @@ export default function BlogViewer({ initialSlug = null, useBlogRoutes = false }
         onClick={backToList}
         className="text-sm text-gray-500 mb-4"
       >
-        ← Back to list
+        ← Back to writing
       </button>
 
       <h1>{post.title}</h1>
