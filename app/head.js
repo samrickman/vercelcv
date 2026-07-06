@@ -1,9 +1,6 @@
 export default function Head() {
   return (
     <>
-      {/* Canonical link */}
-      <link rel="canonical" href="https://www.samrickman.com/" />
-
       {/* JSON-LD */}
       <script
         type="application/ld+json"

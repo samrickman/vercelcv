@@ -10,15 +10,19 @@ function MDXContent() { return null }
 return { default: MDXContent }
 `
 
-export default function BlogViewer() {
+export default function BlogViewer({ initialSlug = null, useBlogRoutes = false }) {
   const router = useRouter()
   const pathname = usePathname()
   const sp = useSearchParams()
-  const slug = sp.get('post')
+  const slug = sp.get('post') ?? initialSlug
 
   const post = useMemo(
     () => allBlogs.find((p) => p.slug === slug) ?? null,
     [slug]
+  )
+  const posts = useMemo(
+    () => [...allBlogs].sort((a, b) => new Date(b.date) - new Date(a.date)),
+    []
   )
 
   function formatDate(dateString) {
@@ -28,12 +32,22 @@ export default function BlogViewer() {
   }
 
   function openPost(nextSlug) {
+    if (useBlogRoutes) {
+      router.replace(`/blog/${nextSlug}`, { scroll: false })
+      return
+    }
+
     const params = new URLSearchParams(sp)
     params.set('post', nextSlug)
     router.replace(`${pathname}?${params.toString()}`, { scroll: false })
   }
 
   function backToList() {
+    if (useBlogRoutes) {
+      router.push('/#blog', { scroll: false })
+      return
+    }
+
     const params = new URLSearchParams(sp)
     params.delete('post')
     router.replace(`${pathname}?${params.toString()}`, { scroll: false })
@@ -48,7 +62,7 @@ export default function BlogViewer() {
         <Text txt="I’ll be posting about AI evaluation, high-stakes LLM applications, and what goes wrong when models meet the real world." />
         <br />
         <ul>
-          {allBlogs.map((p) => (
+          {posts.map((p) => (
             <li key={p._id} className="my-2">
               <button
                 type="button"

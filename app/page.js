@@ -39,7 +39,7 @@ export default function Home() {
       case "misc":
         return <Misc />;
       case "blog":
-        return <BlogViewer />;
+        return <BlogViewer useBlogRoutes />;
       case "genderbiaspresentation":
         return <GenderBiasPresentation />;
       case "lonelinesspresentation":
