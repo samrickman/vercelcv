@@ -47,6 +47,10 @@ pnpm start
 
 The site is **deployed on Vercel** for optimal performance and free hosting. It auto-builds and deploys automatically when updates are pushed updates to GitHub.
 
+## Licensing
+
+The source code for this site is licensed under the MIT License. Website content, including blog posts, CV text and images, is not covered by the MIT License unless stated otherwise. See [NOTICE.md](NOTICE.md) for details.
+
 ## Customisation
 
 - **Particles Settings**: Modify `ParticlesBackground.js` to tweak particle behavior.

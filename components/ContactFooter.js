@@ -12,7 +12,7 @@ export default function ContactFooter() {
                     </a>
               <a href="https://orcid.org/0000-0003-1921-5258" target="blank_" className="text-2xl"><FaOrcid /></a>
             </div>
-            <p className="text-sm text-gray-500 mt-2">© 2025 Sam Rickman</p>
+            <p className="text-sm text-gray-500 mt-2">© Sam Rickman</p>
           </footer>
 )
 }
