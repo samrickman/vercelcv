@@ -302,7 +302,7 @@ export default function CVDetailed({ handleTabChange }) {
                 <List
                     items={[
                         {
-                            text: `<span class="font-semibold">PhD (awarded March 2025)</span> – London School of Economics.`,
+                            text: `<span class="font-semibold">PhD</span> – London School of Economics.`,
                             subitems: [
                                 "Thesis: <em>Understanding Adult Social Care Using Large Language Models with Administrative Records</em>.",
                                 "Analysed 114 million words of social care records from 3,046 older adults to explore how LLMs can address gaps in structured data and reduce administrative burdens.",

@@ -71,7 +71,7 @@ export default function CVEssentials() {
             <Section title="Education">
                 <List
                     items={[
-                        `<span class="font-semibold">PhD (awarded March 2025)</span> – LSE.`,
+                        `<span class="font-semibold">PhD</span> – LSE.`,
                         `<span class="font-semibold">MA Social & Political Science</span>, University of Cambridge.`,
                     ]}
                 />

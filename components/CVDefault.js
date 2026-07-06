@@ -122,7 +122,7 @@ export default function CVDefault() {
       <Section title="Education">
         <List
           items={[
-            `<span class="font-semibold">PhD (awarded March 2025)</span> – Understanding Adult Social Care Using Large Language Models with Administrative Records, London School of Economics.`,
+            `<span class="font-semibold">PhD</span> – Understanding Adult Social Care Using Large Language Models with Administrative Records, London School of Economics.`,
             `<span class="font-semibold">MA in Social and Political Science</span>, University of Cambridge.`,
             `<span class="font-semibold">MA in Social Work (Distinction)</span>, Goldsmiths College, University of London.`,
           ]}
