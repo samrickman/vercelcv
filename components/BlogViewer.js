@@ -10,6 +10,12 @@ function MDXContent() { return null }
 return { default: MDXContent }
 `
 
+function normaliseAssetPath(src) {
+  if (typeof src !== 'string') return src
+  if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#|\/)/i.test(src)) return src
+  return `/${src}`
+}
+
 export default function BlogViewer({ initialSlug = null, useBlogRoutes = false }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -22,6 +28,12 @@ export default function BlogViewer({ initialSlug = null, useBlogRoutes = false }
   )
   const posts = useMemo(
     () => [...allBlogs].sort((a, b) => new Date(b.date) - new Date(a.date)),
+    []
+  )
+  const mdxComponents = useMemo(
+    () => ({
+      img: (props) => <img {...props} src={normaliseAssetPath(props.src)} />,
+    }),
     []
   )
 
@@ -96,7 +108,7 @@ export default function BlogViewer({ initialSlug = null, useBlogRoutes = false }
       <p className="text-sm text-gray-500">{formatDate(post.date)}</p>
 
       <article className="blog-post">
-        <PostComponent />
+        <PostComponent components={mdxComponents} />
       </article>
     </div>
   )
