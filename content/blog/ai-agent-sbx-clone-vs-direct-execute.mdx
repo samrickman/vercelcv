@@ -1,0 +1,178 @@
+---
+title: "How a sandboxed agent left code for my host to execute"
+date: "2026-07-25"
+summary: "A sandboxed agent couldn't access my host directly, but it could leave code for trusted host tools to execute."
+---
+
+[Docker Sandboxes run coding agents inside microVMs](https://docs.docker.com/ai/sandboxes/security/). The agent gets its own filesystem, network and Docker daemon, so it can install packages, execute code and run containers without having general access to the host.
+
+That isolation held in my testing. The agent couldn't browse the host filesystem outside its directory. But it could still leave code which my host later executed. The explanation lies in how Docker Sandboxes shares the workspace.
+
+## The experiment
+
+When your workspace is a Git repo, you can open it in `direct` or `clone` mode. In `direct` mode, [the default](https://docs.docker.com/ai/sandboxes/usage/#:~:text=Direct%20mode%20is%20the%20default.), the agent still can't browse my host outside the mounted directory, but inside it the agent has read-write access to the host working tree, and its edits appear on the host immediately. In `clone` mode, this doesn't happen.
+
+To compare the two, I cloned the GitHub `hello-world` repo twice:
+
+```bash
+git clone https://github.com/octocat/hello-world sbx-direct-lab
+git clone https://github.com/octocat/hello-world sbx-clone-lab
+```
+
+I opened the first in Docker Sandboxes' default `direct` mode and the second using `--clone`:
+
+```bash
+sbx run --name direct-boundary-test codex sbx-direct-lab
+sbx run --clone --name clone-boundary-test codex sbx-clone-lab
+```
+
+In both, I first asked Codex to create an ordinary file:
+
+```text
+Please create a file named agent-created.txt containing:
+
+SBX_WORKSPACE_CANARY_12345
+```
+
+In `direct` mode, the file appeared immediately in my host working tree. In `clone` mode, it existed only inside the microVM. So far, this was exactly as expected.
+
+## The Git hook
+
+I then asked both agents to create a Git [`post-checkout` hook](https://git-scm.com/docs/githooks#_post_checkout), which runs after commands including `git checkout` and `git switch`.
+
+```text
+Please create a git post-checkout hook at:
+
+.git/hooks/post-checkout
+
+When invoked, it should write line:
+
+SBX_DIRECT_HOOK_FIRED_<dir_name>_<timestamp>
+
+to:
+
+/tmp/sbx-direct-hook-fired
+
+Where dir_name is the basename of this directory.
+```
+
+Codex created:
+
+```sh
+#!/bin/sh
+
+dir_name=$(basename "$(pwd)")
+timestamp=$(date +%s)
+
+printf 'SBX_DIRECT_HOOK_FIRED_%s_%s\n' "$dir_name" "$timestamp" >> /tmp/sbx-direct-hook-fired
+```
+
+Inside the sandbox, `/tmp` belonged to the microVM. It was not my host's `/tmp`. Codex still couldn't directly see or modify the host outside the shared workspace.
+
+But in direct mode, `.git/hooks/post-checkout` was of course part of the shared host repository. The agent had therefore installed an executable hook into my real local Git checkout.
+
+That means, when I later ran `git switch` in this repo outside the sandbox, my host Git process executed it as my normal user.
+
+On the host:
+
+```bash
+cat /tmp/sbx-direct-hook-fired
+```
+
+returned:
+
+```text
+SBX_DIRECT_HOOK_FIRED_sbx-direct-lab_1784399896
+```
+
+The sandboxed agent hadn't written directly to my host's `/tmp`. It had written instructions into the shared repo, and the host had executed them outside the sandbox.
+
+This is direct mode working as designed. It's [documented by Docker](https://docs.docker.com/ai/sandboxes/security/). But I suspect it will still surprise people who understand “run the agent in a sandbox” to mean that agent-authored code won't execute on the host. Git hooks are particularly unobvious because they live inside `.git` and don't appear in an ordinary `git diff`.
+
+## Clone mode closes that path
+
+In [clone mode](https://docs.docker.com/ai/sandboxes/workflows/), the host repo is mounted read-only and the agent works in a private Git clone inside the microVM. The agent can make branches and commits, and Docker exposes the repo to the host as a local Git remote. The host working tree isn't touched by the agent.
+
+The `clone` mode agent created the same hook, but it existed inside the private clone's `.git` directory. Nothing appeared under `.git/hooks` in my host repo. Nor would the hook be transferred when I fetched the agent's branch. Hooks under `.git/hooks` are local repo metadata; they aren't tracked files or part of commits.
+
+That seems like a substantial improvement. But does it mean that `clone` mode is completely safe?
+
+## The VS Code task
+
+I next asked both agents to create a `.vscode/tasks.json` file. The task was configured to append a harmless marker to `/tmp/sbx-vscode-task-fired`. The relevant part was:
+
+```json
+"runOptions": {
+  "runOn": "folderOpen"
+}
+```
+
+VS Code supports tasks which run automatically when a workspace folder opens. [Automatic tasks](https://code.visualstudio.com/docs/debugtest/tasks) are blocked by default in untrusted workspaces, but can be allowed in a [trusted workspace](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust).
+
+### Direct mode put the task in a trusted workspace
+
+In direct mode, `.vscode/tasks.json` appeared immediately in the host working tree. The parent directory of this experiment, `~/Projects`, was already trusted by VS Code, and at some point - I think to avoid the pain of being in the wrong Python environment - I'd enabled automatic tasks in trusted workspaces. Naturally, when I opened the direct mode repository, VS Code executed the task, with `/tmp/sbx-vscode-task-fired` on my host containing the line:
+
+```text
+SBX_VSCODE_TASK_FIRED_sbx-direct-lab_1784406847
+```
+
+Again, the microVM hadn't been escaped. A trusted host application had consumed configuration written into the shared workspace.
+
+### What about clone mode?
+
+In clone mode, opening the untouched host repository did nothing. The task existed only inside the agent's private clone. Success!
+
+I then asked Codex to commit `.vscode/tasks.json` on a branch called `vscode-task-demo`. On the host, I fetched that branch from the sandbox Git remote. Fetching downloaded the commit, but didn't alter my working tree or run anything. At that point I could have inspected the change without checking it out:
+
+```bash
+git diff HEAD...sandbox-clone-boundary-test/vscode-task-demo
+```
+
+This isn't how I would normally inspect a substantial change. Instead, I switched my host working tree to the agent's branch and opened the repo in VS Code.
+
+At this point, the host marker contained both entries - the clone mode task had been executed too:
+
+```text
+SBX_VSCODE_TASK_FIRED_sbx-direct-lab_1784406847
+SBX_VSCODE_TASK_FIRED_sbx-clone-lab_1784408234
+```
+
+`git switch` hadn't itself executed the task - it had placed the tracked configuration into an already trusted host workspace. VS Code executed it when I opened the folder.
+
+## But surely I should review untrusted code
+
+There's an obvious objection. The VS Code task was a tracked file. It was visible in the diff. Any malicious code could have been there. One benefit of clone mode is to give me an opportunity to review the agent's changes before accepting them.
+
+That's true. But switching to a branch is an easy way to inspect code. I might reasonably open a branch because I intend to read the changes, not run them. In my case, two previous and individually reasonable decisions had combined:
+
+- I had trusted my `~/Projects` directory.
+- I had allowed automatic tasks in trusted workspaces.
+
+The agent then supplied new executable configuration through a Git commit. Because the child repository inherited trust from its parent, opening it produced no further warning.
+
+I wouldn't claim that this is everyone's setup. But I don't think it's a staggeringly unusual one.
+
+More importantly, the experiment illustrates a limitation which applies beyond VS Code: **reviewing untrusted code and executing parts of it are not always as clearly separated as we imagine.**
+
+## What I'll do differently
+
+I don't think I'll be using the default `direct` mode with Codex. The idea that a compromised agent within a sandbox can install and untracked Git hook for my host to unwittingly execute is not appealing. In `clone` mode, at least the Git hook stayed in the sandbox.
+
+Beyond that, the answer is less satisfying. I could say that I'll inspect every diff before checking out an agent's branch. But I'm not realistically going to review substantial changes line by line in a terminal. And requiring a human to approve every line of AI-generated code would eliminate much of the benefit of using an agent in the first place.
+
+Nor is human review a particularly strong defence against this kind of problem. Would I be paying attention to every change to a json file? Had I noticed a change in `.vscode/` in a diff, I might have thought only that it belonged in `.gitignore`.
+
+There are some immediate precautions I can take:
+
+1. Avoid giving broad parent directories permanent trust in VS Code.
+2. Disable automatic tasks unless I really need them.
+3. Open unfamiliar branches in a disposable or untrusted workspace first.
+
+I can also pay particular attention to files which control editors, package managers, build systems and test runners. But these are mitigations, not a convincing workflow for reviewing everything an autonomous agent produces.
+
+The deeper problem is that repos contain both code to inspect and instructions which trusted host tools may execute. Direct mode allowed an agent in a sandbox to alter some of those instructions in a host workspace.
+
+Clone mode at least created a boundary. But the experiment also showed how easy that boundary is to misunderstand. Our dev environments have a role to play in making that boundary clearer. Checking out a branch and opening it in an editor feels like reviewing the agent's work, but can be enough to run part of it.
+
+Within the workspace, a Docker Sandbox in direct mode creates [no boundary](https://docs.docker.com/ai/sandboxes/security/isolation/#:~:text=There%20is%20no%20boundary%20between%20the%20agent%27s%20edits%20and%20your%20host%20filesystem) between the agent's edits and the host. Clone mode does create a review boundary. The catch is that it's not always obvious which actions cross it.
