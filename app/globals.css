@@ -114,6 +114,11 @@ ul.list-disc li {
   @apply text-linktextdark dark:text-linktextlight;
 }
 
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
 .image-container {
   position: relative;
   z-index: 1;
