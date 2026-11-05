@@ -312,6 +312,17 @@
     state.files = sprites;
   }
 
+    async function loadDeltaruneCh5Preset() {
+    const files = await loadPresetManifest("deltarune_ch5");
+    const sprites = await Promise.all(
+      files.map((filename) =>
+        loadPresetRecord("deltarune_ch5", filename)
+      )
+    );
+    sprites.sort((left, right) => left.sourceName.localeCompare(right.sourceName));
+    state.files = sprites;
+  }
+
   async function loadUndertalePreset() {
     const files = await loadPresetManifest("undertale");
     const sprites = await Promise.all(
@@ -1190,6 +1201,8 @@
       const preset = elements.samplePreset.value;
       if (preset === "deltarune") {
         await loadDeltarunePreset();
+      } else if (preset === "deltarune_ch5") {
+        await loadDeltaruneCh5Preset();
       } else {
         await loadUndertalePreset();
       }
